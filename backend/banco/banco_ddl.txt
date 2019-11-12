@@ -1,0 +1,21 @@
+-- TABELA TIPO
+
+CREATE TABLE tab_tipo(
+	idTipo int IDENTITY(1,1) NOT NULL,
+	descricao varchar(200) NOT NULL,
+	CONSTRAINT PK_tab_tipo PRIMARY KEY (idTipo)
+);
+
+
+-- TABELA DESPESAS
+
+CREATE TABLE tab_despesas(
+    idDespesa int IDENTITY(1,1) NOT NULL,
+    data_cadastro date not null,
+    descricao varchar(200) not null,
+    idTipo int not null,
+
+    CONSTRAINT PK_DESPESA PRIMARY KEY (idDespesa),
+    CONSTRAINT FK_tb_despesas_idTipo FOREIGN KEY (idTipo)
+    REFERENCES tab_tipo (idTipo)
+);
