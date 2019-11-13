@@ -1,0 +1,28 @@
+--INSERT TIPO
+
+INSERT INTO TIPOS (descricao) VALUES ('Alimentação');
+INSERT INTO TIPOS (descricao) VALUES ('Lazer');
+INSERT INTO TIPOS (descricao) VALUES ('Transporte');
+INSERT INTO TIPOS (descricao) VALUES ('Saúde');
+INSERT INTO TIPOS (descricao) VALUES ('Educação');
+
+
+--INSERT DESPESA
+
+INSERT INTO DESPESAS (dataCadastro, descricao, idTipo, valor) VALUES (
+	Convert(datetime, '17/01/2013', 103),
+	'Passagens', 
+	3, 100);
+
+INSERT INTO DESPESAS (dataCadastro, descricao, idTipo, valor) VALUES (
+	Convert(datetime, '13/08/2018', 103),
+	'Sorvete', 
+	3, 10);
+ 
+INSERT INTO DESPESAS (dataCadastro, descricao, idTipo, valor) VALUES (
+	Convert(datetime, '03/08/2017', 103),
+	'Cinema', 
+	3, 40);  
+
+SELECT * FROM TIPOS;
+SELECT * FROM DESPESAS;
