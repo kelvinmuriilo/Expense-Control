@@ -2,12 +2,12 @@ using System.Collections.Generic;
 using backend.Model;
 using System.Linq;
 
+
 namespace backend.Repositorio
 {
     public class ExpenseRepositorio : IExpenseRepositorio
     {
         private readonly ExpenseDbContext _contexto;
-        public List<Despesa> desp;
         public ExpenseRepositorio(ExpenseDbContext ctx)
         {
             _contexto = ctx;
@@ -25,8 +25,8 @@ namespace backend.Repositorio
 
         public IEnumerable<Despesa> GetAll()
         {   
-            desp = _contexto.Despesas.ToList();
-            return desp;
+            return _contexto.Despesas.ToList();
+          
         }
         public void Remove(long id)
         {
