@@ -21,7 +21,7 @@ namespace backend.Controllers
         }
 
         [HttpGet("{id}", Name="GetDespesa")]
-        public IActionResult GetById(long id)
+        public IActionResult GetById(int id)
         {
             var despesa = _expenseRepositorio.Find(id);
             if(despesa == null)
@@ -42,10 +42,9 @@ namespace backend.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(long id, [FromBody] Despesa despesa)
+        public IActionResult Update(int id, [FromBody] Despesa despesa)
         {
-            if (despesa == null || despesa.idDespesa != id)
-            return BadRequest();
+           
 
             var desp = _expenseRepositorio.Find(id);
 
@@ -55,13 +54,14 @@ namespace backend.Controllers
             desp.dataCadastro = despesa.dataCadastro;
             desp.descricao = despesa.descricao;
             desp.idTipo = despesa.idTipo;
+            desp.valor = despesa.valor;
 
             _expenseRepositorio.Update(desp);
             return new NoContentResult();
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(long id)
+        public IActionResult Delete(int id)
         {
         var despesa = _expenseRepositorio.Find(id);
 

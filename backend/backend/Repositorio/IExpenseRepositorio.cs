@@ -8,8 +8,8 @@ namespace backend.Repositorio
     {
          void Add(Despesa despesa);
          IEnumerable<Despesa> GetAll();
-         Despesa Find(long id);
-         void Remove(long id);
+         Despesa Find(int id);
+         void Remove(int id);
          void Update(Despesa despesa); 
     }
 }

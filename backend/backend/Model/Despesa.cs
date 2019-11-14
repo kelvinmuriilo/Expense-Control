@@ -7,8 +7,10 @@ namespace backend.Model
     {
         [Key]
         public int idDespesa { get; set; }
-        public string dataCadastro { get; set; }
+        public DateTime dataCadastro { get; set; }
         public string descricao { get; set; }
+
+        public decimal valor { get; set; }
         public int idTipo {get; set;}
 
     }

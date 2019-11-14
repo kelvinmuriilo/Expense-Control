@@ -20,7 +20,7 @@ namespace backend.Repositorio
 
         }
 
-        public Despesa Find(long id)
+        public Despesa Find(int id)
         {
             return _contexto.Despesas.FirstOrDefault(des => des.idDespesa == id);
         }
@@ -30,11 +30,11 @@ namespace backend.Repositorio
             return _contexto.Despesas.ToList();
           
         }
-        public void Remove(long id)
+        public void Remove(int id)
         {
             var despesa = _contexto.Despesas.Find(id);
             _contexto.Despesas.Remove(despesa);
-             _contexto.SaveChanges();
+            _contexto.SaveChanges();
 
         }
 
