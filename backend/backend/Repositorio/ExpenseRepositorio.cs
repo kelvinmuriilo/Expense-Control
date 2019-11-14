@@ -16,6 +16,8 @@ namespace backend.Repositorio
         public void Add(Despesa despesa)
         {
             _contexto.Despesas.Add(despesa);
+            _contexto.SaveChanges();
+
         }
 
         public Despesa Find(long id)
@@ -32,13 +34,15 @@ namespace backend.Repositorio
         {
             var despesa = _contexto.Despesas.Find(id);
             _contexto.Despesas.Remove(despesa);
-            _contexto.SaveChanges();
+             _contexto.SaveChanges();
+
         }
 
         public void Update(Despesa despesa)
         {
             _contexto.Despesas.Update(despesa);
             _contexto.SaveChanges();
+
         }
     }
 }
