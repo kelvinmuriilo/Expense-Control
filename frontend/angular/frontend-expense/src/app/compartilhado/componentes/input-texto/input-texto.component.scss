@@ -1,0 +1,30 @@
+*{font-family: 'Allerta', sans-serif;}
+
+
+i {
+  background-color: transparent;
+  color: white;
+  font-size: 150%;
+  width: 100%;
+  text-align: center;
+}
+
+.input-invalido {
+  border-style: solid;
+  border-width: 0.001cm;
+  border-color: red !important;
+}
+
+.div-msg-erro {
+  color: red;
+  font-size: 0.3cm;
+}
+
+.input-group-prepend{
+  min-width: 50px !important;
+  min-height: 50px !important;  
+}
+
+span{
+  width: 100%;
+}

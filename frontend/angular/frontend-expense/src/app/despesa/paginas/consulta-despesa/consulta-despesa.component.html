@@ -1,7 +1,9 @@
-<div class="container">
+<div class="container col-12">
     <div class="row">
-        <div>
+        <div class="campo-buscar col-3">
             Buscar
+            <app-input-texto [formControl]="formBuscarDespesa.controls['idDespesa']" placeholder="Digite o código"
+                msgErro="Campo obrigatório" classeIcone="fa fa-search"></app-input-texto>
         </div>
     </div>
     <div class="row">
@@ -9,14 +11,37 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th style="width: 10%;" class="text-center">Código</th>
-                        <th style="width: 30%;" class="text-center">Descrição</th>
-                        <th style="width: 20%;" class="text-center">Data</th>
+                        <th style="width: 5%;" class="text-center">Código</th>
+                        <th style="width: 20%;" class="text-center">Descrição</th>
+                        <th style="width: 15%;" class="text-center">Tipo</th>
+                        <th style="width: 15%;" class="text-center">Data</th>
                         <th style="width: 20%;" class="text-center">Valor</th>
-                        <th style="width: 20%;" class="text-center">Ações</th>
+                        <th style="width: 25%;" class="text-center">Ações</th>
                     </tr>
                 </thead>
+                <tbody [class.d-none]="!mostrarTabela()">
+                    <tr *ngFor="let despesa of listaDespesas">
+                        <td class="text-center">{{ despesa.idDespesa }}</td>
+                        <td class="text-center">{{ despesa.descricao }}</td>
+                        <td class="text-center">{{ despesa.idTipo }}</td>
+                        <td class="text-center">{{ despesa.dataCadastro | date: 'dd/MM/yyyy'}}</td>
+                        <td class="text-center">{{ despesa.valor }}</td>
+                        <td class="text-center">
+                            <a class="btn btn-primary btn-sm" role="button" title="Editar">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a class="btn btn-danger btn-sm" role="button" title="Excluir">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody [class.d-none]="mostrarTabela()">
+                    <tr>
+                        <th colspan="6" class="text-center">Não foram encontrados registros!</th>
+                    </tr>
+                </tbody>
             </table>
         </div>
-    </div>    
+    </div>
 </div>

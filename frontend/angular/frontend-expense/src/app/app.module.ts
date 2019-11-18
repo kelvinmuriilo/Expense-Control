@@ -6,13 +6,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CadastroDespesaComponent } from './despesa/paginas/cadastro-despesa/cadastro-despesa.component';
 import { ConsultaDespesaComponent } from './despesa/paginas/consulta-despesa/consulta-despesa.component';
 import { DespesaService } from './despesa/despesa.service';
-import { routing }  from './app.route';
+import { routing } from './app.route';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { InputTextoComponent } from './compartilhado/componentes/input-texto/input-texto.component';
 
@@ -29,7 +30,9 @@ import { InputTextoComponent } from './compartilhado/componentes/input-texto/inp
     AppRoutingModule,
     routing,
     Ng4LoadingSpinnerModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [DespesaService],
   bootstrap: [AppComponent]
