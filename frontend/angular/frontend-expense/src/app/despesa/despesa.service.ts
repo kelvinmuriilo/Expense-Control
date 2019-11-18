@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { Despesa } from '../app.modelo';
 import { Observable } from 'rxjs';
 
-const   URL_CONTROLADOR: string = 'localhost:5001/api/despesa';
+const   URL_CONTROLADOR: string = 'https://localhost:5001/api/despesa';
 
 @Injectable({
   providedIn: 'root'

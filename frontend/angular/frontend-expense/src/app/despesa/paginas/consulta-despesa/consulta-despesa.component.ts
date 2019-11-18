@@ -24,8 +24,8 @@ export class ConsultaDespesaComponent implements OnInit {
 
   ngOnInit() {
     this.iniciarFormBuscarDespesa();
-    //this.listarDespesas();
-    this.iniciarListaDespesas();
+    this.listarDespesas();
+    //this.iniciarListaDespesas();
     console.log(this.listaDespesas);
   }
 

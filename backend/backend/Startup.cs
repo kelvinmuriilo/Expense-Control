@@ -31,6 +31,7 @@ namespace backend
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<IExpenseRepositorio, ExpenseRepositorio>();
             services.AddControllers();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +45,9 @@ namespace backend
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            
+            app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin());
+
 
             app.UseAuthorization();
 
