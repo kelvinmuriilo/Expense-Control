@@ -4,6 +4,38 @@
            <div class="card">
                <div class="card-header">Cadastro de despesa</div>
                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <app-input-texto
+                                [formControl]="this.formCadastroDespesa.controls['descricao']"
+                                msgErro="Informe um e-mail válido."
+                                placeholder="Descrição"
+                                classeIcone="">
+                            </app-input-texto>
+                        </div>
+                        <div class="col-3">
+                            <app-input-selecao
+                                [formControl]="this.formCadastroDespesa.controls['idTipo']"
+                                placeholder="Tipo"
+                                [listaOpcao]="listaDeTipos"
+                                classeIcone="fa fa-address-card">
+                            </app-input-selecao>
+                        </div>
+                        <div class="col-3">
+                            <app-input-texto
+                                [formControl]="this.formCadastroDespesa.controls['valor']"
+                                msgErro="Somente números."
+                                placeholder="Valor"
+                                classeIcone="">
+                            </app-input-texto>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            
+                        </div>
+                    </div>
                </div>
            </div>
         </div>
