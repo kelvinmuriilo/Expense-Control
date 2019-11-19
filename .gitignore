@@ -1,0 +1,5 @@
+backend/backend/.vs/
+.vscode/iis-e-settings.json
+.vscode/iisexpress.json
+backend/backend/bin/Debug/netcoreapp3.0/*
+backend/backend/obj/Debug/netcoreapp3.0/*
