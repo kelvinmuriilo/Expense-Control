@@ -17,6 +17,7 @@ import { routing } from './app.route';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { InputTextoComponent } from './compartilhado/componentes/input-texto/input-texto.component';
 import { InputSelecaoComponent } from './compartilhado/componentes/input-selecao/input-selecao.component';
+import { BotaoComponent } from './compartilhado/componentes/botao/botao.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { InputSelecaoComponent } from './compartilhado/componentes/input-selecao
     CadastroDespesaComponent,
     ConsultaDespesaComponent,
     InputTextoComponent,
-    InputSelecaoComponent
+    InputSelecaoComponent,
+    BotaoComponent
   ],
   imports: [
     BrowserModule,

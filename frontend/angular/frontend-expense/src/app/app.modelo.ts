@@ -11,7 +11,15 @@ interface Tipo{
     descricao: string;
 }
 
+interface CadastrarDespesa{
+    dataCadastro: Date;
+    descricao: string;
+    valor:number;
+    idTipo: number;
+}
+
 export {
     Despesa,
-    Tipo
+    Tipo,
+    CadastrarDespesa
 }

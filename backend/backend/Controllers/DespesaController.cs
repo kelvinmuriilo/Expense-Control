@@ -3,6 +3,7 @@ using backend.Repositorio;
 using System.Collections.Generic;
 using backend.Model;
 
+
 namespace backend.Controllers
 {
     [Route("api/[Controller]")]
@@ -34,6 +35,7 @@ namespace backend.Controllers
         [HttpPost]
         public IActionResult Create([FromBody ]Despesa despesa)
         {
+            
             if(despesa == null)
             return BadRequest();
 

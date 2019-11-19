@@ -47,4 +47,8 @@ export class ConsultaDespesaComponent implements OnInit {
       idDespesa: this.formBuilder.control('', Validators.required, Validators.pattern[("^[0-9]")])
     });
   }
+
+  excluirDespesa(idDespesa: number): void{
+    this.despesaServico.excluirDespesa(idDespesa);
+  }
 }

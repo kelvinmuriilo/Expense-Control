@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { DespesaService } from '../../despesa.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import { CadastrarDespesa, Despesa } from 'src/app/app.modelo';
 
 @Component({
   selector: 'app-cadastro-despesa',
@@ -41,4 +42,14 @@ export class CadastroDespesaComponent implements OnInit {
     });
   }
 
+  cadastrarDespesa(): void{
+    let despesa: CadastrarDespesa = {
+      dataCadastro: this.formCadastroDespesa.value.dataCadastro,
+      descricao: this.formCadastroDespesa.value.descricao,
+      valor: this.formCadastroDespesa.value.valor,
+      idTipo: this.formCadastroDespesa.value.idTipo
+    };
+    
+    this.despesaServico.cadastrarDespesa(despesa).subscribe();
+  }
 }

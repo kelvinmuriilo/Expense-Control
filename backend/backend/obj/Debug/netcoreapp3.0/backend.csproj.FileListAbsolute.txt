@@ -93,3 +93,14 @@ C:\wamp64\www\Expense-Control\backend\backend\obj\Debug\netcoreapp3.0\backend.Ra
 C:\wamp64\www\Expense-Control\backend\backend\obj\Debug\netcoreapp3.0\backend.csproj.CopyComplete
 C:\wamp64\www\Expense-Control\backend\backend\obj\Debug\netcoreapp3.0\backend.dll
 C:\wamp64\www\Expense-Control\backend\backend\obj\Debug\netcoreapp3.0\backend.pdb
+C:\Users\Kelvin Murilo\Documents\Estudos\Expense-Control\backend\backend\bin\Debug\netcoreapp3.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\Kelvin Murilo\Documents\Estudos\Expense-Control\backend\backend\bin\Debug\netcoreapp3.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Kelvin Murilo\Documents\Estudos\Expense-Control\backend\backend\bin\Debug\netcoreapp3.0\Microsoft.Extensions.Configuration.dll
+C:\Users\Kelvin Murilo\Documents\Estudos\Expense-Control\backend\backend\bin\Debug\netcoreapp3.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\Kelvin Murilo\Documents\Estudos\Expense-Control\backend\backend\bin\Debug\netcoreapp3.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\Kelvin Murilo\Documents\Estudos\Expense-Control\backend\backend\bin\Debug\netcoreapp3.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Kelvin Murilo\Documents\Estudos\Expense-Control\backend\backend\bin\Debug\netcoreapp3.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Kelvin Murilo\Documents\Estudos\Expense-Control\backend\backend\bin\Debug\netcoreapp3.0\Microsoft.Extensions.Logging.dll
+C:\Users\Kelvin Murilo\Documents\Estudos\Expense-Control\backend\backend\bin\Debug\netcoreapp3.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Kelvin Murilo\Documents\Estudos\Expense-Control\backend\backend\bin\Debug\netcoreapp3.0\Microsoft.Extensions.Options.dll
+C:\Users\Kelvin Murilo\Documents\Estudos\Expense-Control\backend\backend\bin\Debug\netcoreapp3.0\Microsoft.Extensions.Primitives.dll
