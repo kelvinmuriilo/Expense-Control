@@ -6,6 +6,12 @@ interface Despesa{
     idTipo: number;
 }
 
+interface Tipo{
+    idTipo: number;
+    descricao: string;
+}
+
 export {
-    Despesa
+    Despesa,
+    Tipo
 }

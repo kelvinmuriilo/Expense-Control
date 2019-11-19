@@ -1,0 +1,10 @@
+<div class="input-group mb-3" style="height: 50px;">
+    <div class="input-group-prepend">
+        <span class="input-group-text bg-primary"><i class="fa {{classeIcone}}" aria-hidden="true"></i></span>
+    </div>
+    <select style="height: 50px;" class="custom-select" [formControl]="formControl" id="select"
+        (change)="writeValue($event.target.value)">
+        <option disabled selected value="">{{placeholder}}</option>
+        <option *ngFor="let opcao of listaOpcao" [value]="opcao.valor">{{opcao.descricao}}</option>
+    </select>
+</div>
