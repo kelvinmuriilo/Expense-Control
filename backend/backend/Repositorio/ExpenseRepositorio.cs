@@ -30,6 +30,12 @@ namespace backend.Repositorio
             return _contexto.Despesas.ToList();
           
         }
+
+        public IEnumerable<Tipo> GetTipos()
+        {
+            return _contexto.Tipos.ToList(); 
+        }
+        
         public void Remove(int id)
         {
             var despesa = _contexto.Despesas.Find(id);
