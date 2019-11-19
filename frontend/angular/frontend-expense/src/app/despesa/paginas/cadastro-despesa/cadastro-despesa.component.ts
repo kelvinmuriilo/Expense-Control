@@ -51,5 +51,6 @@ export class CadastroDespesaComponent implements OnInit {
     };
     
     this.despesaServico.cadastrarDespesa(despesa).subscribe();
+    
   }
 }

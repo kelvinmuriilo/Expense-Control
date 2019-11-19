@@ -14,6 +14,10 @@ const   URL_CONTROLADOR: string = 'https://localhost:5001/api';
   providedIn: 'root'
 })
 export class DespesaService {
+  private headers = new Headers({
+    "Content-Type": "application/json",
+    "Accept": "application/json"
+  });
 
   constructor(
 
@@ -29,14 +33,14 @@ export class DespesaService {
   }
 
   excluirDespesa(idDespesa: number): Observable<any>{
-    console.log("Excluir despesa: ", idDespesa)
-    return this.httpClient.delete(`${URL_CONTROLADOR}/${idDespesa}`);
+    return this.httpClient.delete(`${URL_CONTROLADOR}/despesa/${idDespesa}/`, {});
   }
 
   cadastrarDespesa(dados: CadastrarDespesa): Observable<any>{
     console.log('Cadastrar: ', dados)
-    return this.httpClient.post(`${URL_CONTROLADOR}/despesa`,JSON.stringify(dados),{
-      responseType: 'text'
+    return this.httpClient.post(`${URL_CONTROLADOR}/despesa/${dados}`,{
+      headers: this.headers
     });
   }
+
 }
