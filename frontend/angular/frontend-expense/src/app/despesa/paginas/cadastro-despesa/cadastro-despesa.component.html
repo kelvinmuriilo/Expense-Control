@@ -1,54 +1,42 @@
 <div class="container">
     <div class="row">
         <div class="col-10">
-           <div class="card">
-               <div class="card-header">Cadastro de despesa</div>
-               <div class="card-body">
+            <div class="card">
+                <div class="card-header">Cadastro de despesa</div>
+                <div class="card-body">
                     <div class="row">
                         <div class="col-6">
-                            <app-input-texto
-                                [formControl]="formCadastroDespesa.controls['descricao']"
-                                msgErro="Campo obrigatório."
-                                placeholder="Descrição"
-                                classeIcone="">
+                            <app-input-texto [formControl]="formCadastroDespesa.controls['descricao']"
+                                msgErro="Campo obrigatório." placeholder="Descrição" classeIcone="">
                             </app-input-texto>
                         </div>
                         <div class="col-3">
-                            <app-input-selecao
-                                [formControl]="formCadastroDespesa.controls['idTipo']"
-                                placeholder="Tipo"
+                            <app-input-selecao [formControl]="formCadastroDespesa.controls['idTipo']" placeholder="Tipo"
                                 [listaOpcao]="listaDeTipos">
                             </app-input-selecao>
                         </div>
                         <div class="col-3">
-                            <app-input-texto
-                                [formControl]="formCadastroDespesa.controls['valor']"
-                                msgErro="Somente números."
-                                placeholder="Valor"
-                                classeIcone="">
+                            <app-input-texto [formControl]="formCadastroDespesa.controls['valor']"
+                                msgErro="Somente números." placeholder="Valor" classeIcone="">
                             </app-input-texto>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-6">
-                            <app-input-texto
-                                [formControl]="formCadastroDespesa.controls['dataCadastro']"
-                                tipo="date"
-                                msgErro="Somente números."
-                                placeholder="Valor"
-                                classeIcone="">
+                            <app-input-texto [formControl]="formCadastroDespesa.controls['dataCadastro']" tipo="date"
+                                msgErro="Somente números." placeholder="Valor" classeIcone="">
                             </app-input-texto>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-4">
-                            <app-botao texto="Cadastrar" [liberado]="formCadastroDespesa.valid" (eventoclick)="cadastrarDespesa()"></app-botao>
+                            <app-botao texto="Cadastrar" [liberado]="formCadastroDespesa.valid"
+                                (eventoclick)="cadastrarDespesa()"></app-botao>
                         </div>
                     </div>
-               </div>
-           </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-

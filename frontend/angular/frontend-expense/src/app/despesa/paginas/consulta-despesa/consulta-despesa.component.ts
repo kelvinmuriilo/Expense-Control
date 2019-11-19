@@ -25,8 +25,6 @@ export class ConsultaDespesaComponent implements OnInit {
   ngOnInit() {
     this.iniciarFormBuscarDespesa();
     this.carregarListaDeDespesas();
-    //this.iniciarListaDespesas();
-    
   }
 
   carregarListaDeDespesas(): void {
@@ -47,8 +45,12 @@ export class ConsultaDespesaComponent implements OnInit {
     });
   }
 
-  excluirDespesa(idDespesa: number): void{
-    this.despesaServico.excluirDespesa(idDespesa).subscribe();
-    this.carregarListaDeDespesas();
+  excluirDespesa(idDespesa: number): void {
+    this.spinnerServico.show();
+    this.despesaServico.excluirDespesa(idDespesa).subscribe(msg => {
+      console.log(msg);
+      this.spinnerServico.hide();
+      this.carregarListaDeDespesas();
+    });
   }
 }

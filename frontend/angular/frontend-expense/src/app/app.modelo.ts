@@ -1,4 +1,4 @@
-interface Despesa{
+interface Despesa {
     idDespesa: number;
     dataCadastro: Date;
     descricao: string;
@@ -6,15 +6,15 @@ interface Despesa{
     idTipo: number;
 }
 
-interface Tipo{
+interface Tipo {
     idTipo: number;
     descricao: string;
 }
 
-interface CadastrarDespesa{
+interface CadastrarDespesa {
     dataCadastro: Date;
     descricao: string;
-    valor:number;
+    valor: number;
     idTipo: number;
 }
 

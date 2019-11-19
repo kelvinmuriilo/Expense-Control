@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DespesaService } from '../../despesa.service';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { CadastrarDespesa, Despesa } from 'src/app/app.modelo';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-despesa',
@@ -17,7 +18,8 @@ export class CadastroDespesaComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private despesaServico: DespesaService,
-    private spinnerServico: Ng4LoadingSpinnerService
+    private spinnerServico: Ng4LoadingSpinnerService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -25,7 +27,7 @@ export class CadastroDespesaComponent implements OnInit {
     this.iniciarFromCadastroDespesa();
   }
 
-  iniciarFromCadastroDespesa(): void{
+  iniciarFromCadastroDespesa(): void {
     this.formCadastroDespesa = this.formBuilder.group({
       dataCadastro: this.formBuilder.control('', Validators.required),
       descricao: this.formBuilder.control('', Validators.required),
@@ -34,7 +36,7 @@ export class CadastroDespesaComponent implements OnInit {
     });
   }
 
-  carregarListaTipos(): void{
+  carregarListaTipos(): void {
     this.spinnerServico.show();
     this.despesaServico.getListaTipos().subscribe(tipo => {
       this.listaDeTipos = tipo;
@@ -42,15 +44,17 @@ export class CadastroDespesaComponent implements OnInit {
     });
   }
 
-  cadastrarDespesa(): void{
+  cadastrarDespesa(): void {
     let despesa: CadastrarDespesa = {
       dataCadastro: this.formCadastroDespesa.value.dataCadastro,
       descricao: this.formCadastroDespesa.value.descricao,
-      valor: this.formCadastroDespesa.value.valor,
-      idTipo: this.formCadastroDespesa.value.idTipo
+      valor: Number.parseInt(this.formCadastroDespesa.value.valor),
+      idTipo: Number.parseInt(this.formCadastroDespesa.value.idTipo)
     };
-    
-    this.despesaServico.cadastrarDespesa(despesa).subscribe();
-    
+    this.spinnerServico.show();
+    this.despesaServico.cadastrarDespesa(despesa).subscribe(msg =>
+      console.log(msg));
+    this.spinnerServico.hide();
+    this.formCadastroDespesa.reset();
   }
 }

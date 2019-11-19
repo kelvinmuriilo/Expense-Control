@@ -1,5 +1,5 @@
 <div class="container col-12">
-    <div class="row">
+    <div style="display: none;" class="row">
         <div class="campo-buscar col-3">
             Buscar
             <app-input-texto [formControl]="formBuscarDespesa.controls['idDespesa']" placeholder="Digite o código"
@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-8">
+        <div class="col-8 mt-5">
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -30,7 +30,8 @@
                             <a class="btn btn-primary btn-sm" role="button" title="Editar">
                                 <i class="fa fa-edit"></i>
                             </a>
-                            <a class="btn btn-danger btn-sm" role="button" title="Excluir" (click)="excluirDespesa(despesa.idDespesa)">
+                            <a class="btn btn-danger btn-sm" role="button" title="Excluir"
+                                (click)="excluirDespesa(despesa.idDespesa)">
                                 <i class="fa fa-trash"></i>
                             </a>
                         </td>

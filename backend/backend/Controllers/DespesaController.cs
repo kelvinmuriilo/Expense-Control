@@ -21,37 +21,35 @@ namespace backend.Controllers
             return _expenseRepositorio.GetAll();
         }
 
-        [HttpGet("{id}", Name="GetDespesa")]
+        [HttpGet("{id}", Name = "GetDespesa")]
         public IActionResult GetById(int id)
         {
             var despesa = _expenseRepositorio.Find(id);
-            if(despesa == null)
-            return NotFound();
+            if (despesa == null)
+                return NotFound();
 
             return new ObjectResult(despesa);
-            
+
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody ]Despesa despesa)
+        public string Create([FromBody]Despesa despesa)
         {
-            
-            if(despesa == null)
-            return BadRequest();
+
+            if (despesa == null)
+                throw new System.Exception("Nulo");
 
             _expenseRepositorio.Add(despesa);
-            return CreatedAtRoute ("GetDespesa", new {id = despesa.idDespesa}, despesa);
+            return "Cadastrado com sucesso!";
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] Despesa despesa)
+        public string Update(int id, [FromBody] Despesa despesa)
         {
-           
-
             var desp = _expenseRepositorio.Find(id);
 
-            if(desp == null)
-            return NotFound();
+            if (desp == null)
+                throw new System.Exception("Nulo");
 
             desp.dataCadastro = despesa.dataCadastro;
             desp.descricao = despesa.descricao;
@@ -59,19 +57,19 @@ namespace backend.Controllers
             desp.valor = despesa.valor;
 
             _expenseRepositorio.Update(desp);
-            return new NoContentResult();
+            return "Atualizado com sucesso!";
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public string Delete(int id)
         {
-        var despesa = _expenseRepositorio.Find(id);
+            var despesa = _expenseRepositorio.Find(id);
 
-        if(despesa == null)
-            return NotFound();
-        
-        _expenseRepositorio.Remove(id);
-        return new NoContentResult();
+            if (despesa == null)
+                throw new System.Exception("Nulo");
+
+            _expenseRepositorio.Remove(id);
+            return "Excluído com sucesso!";
         }
     }
 }

@@ -8,7 +8,6 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CadastroDespesaComponent } from './despesa/paginas/cadastro-despesa/cadastro-despesa.component';
 import { ConsultaDespesaComponent } from './despesa/paginas/consulta-despesa/consulta-despesa.component';
@@ -31,7 +30,6 @@ import { BotaoComponent } from './compartilhado/componentes/botao/botao.componen
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     routing,
     Ng4LoadingSpinnerModule.forRoot(),
     HttpClientModule,
