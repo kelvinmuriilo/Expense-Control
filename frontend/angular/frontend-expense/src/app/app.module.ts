@@ -16,6 +16,7 @@ import { DespesaService } from './despesa/despesa.service';
 import { routing } from './app.route';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { InputTextoComponent } from './compartilhado/componentes/input-texto/input-texto.component';
+import { InputSelecaoComponent } from './compartilhado/componentes/input-selecao/input-selecao.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { InputTextoComponent } from './compartilhado/componentes/input-texto/inp
     AppComponent,
     CadastroDespesaComponent,
     ConsultaDespesaComponent,
-    InputTextoComponent
+    InputTextoComponent,
+    InputSelecaoComponent
   ],
   imports: [
     BrowserModule,
