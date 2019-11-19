@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Kelvin Murilo\\Documents\\Estudos\\Expense-Control\\backend\\backend\\backend.csproj": {}
+    "C:\\wamp64\\www\\Expense-Control\\backend\\backend\\backend.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Kelvin Murilo\\Documents\\Estudos\\Expense-Control\\backend\\backend\\backend.csproj": {
+    "C:\\wamp64\\www\\Expense-Control\\backend\\backend\\backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Kelvin Murilo\\Documents\\Estudos\\Expense-Control\\backend\\backend\\backend.csproj",
+        "projectUniqueName": "C:\\wamp64\\www\\Expense-Control\\backend\\backend\\backend.csproj",
         "projectName": "backend",
-        "projectPath": "C:\\Users\\Kelvin Murilo\\Documents\\Estudos\\Expense-Control\\backend\\backend\\backend.csproj",
-        "packagesPath": "C:\\Users\\Kelvin Murilo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Kelvin Murilo\\Documents\\Estudos\\Expense-Control\\backend\\backend\\obj\\",
+        "projectPath": "C:\\wamp64\\www\\Expense-Control\\backend\\backend\\backend.csproj",
+        "packagesPath": "C:\\Users\\natha\\.nuget\\packages\\",
+        "outputPath": "C:\\wamp64\\www\\Expense-Control\\backend\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\Kelvin Murilo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\natha\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -47,7 +47,7 @@
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[3.0.1, )"
             }
           },
           "imports": [
