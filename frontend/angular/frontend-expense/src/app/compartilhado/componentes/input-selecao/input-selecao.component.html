@@ -5,6 +5,6 @@
     <select style="height: 50px;" class="custom-select" [formControl]="formControl" id="select"
         (change)="writeValue($event.target.value)">
         <option disabled selected value="">{{placeholder}}</option>
-        <option *ngFor="let opcao of listaOpcao" [value]="opcao.valor">{{opcao.descricao}}</option>
+        <option *ngFor="let opcao of listaOpcao" [value]="opcao.idTipo">{{opcao.descricao}}</option>
     </select>
 </div>
