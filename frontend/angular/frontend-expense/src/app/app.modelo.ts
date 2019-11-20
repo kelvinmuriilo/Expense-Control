@@ -18,8 +18,17 @@ interface CadastrarDespesa {
     idTipo: number;
 }
 
+interface AtualizarDespesa {
+    idDespesa: number;
+    dataCadastro: Date;
+    descricao: string;
+    valor: number;
+    idTipo: number;
+}
+
 export {
     Despesa,
     Tipo,
-    CadastrarDespesa
+    CadastrarDespesa,
+    AtualizarDespesa
 }
