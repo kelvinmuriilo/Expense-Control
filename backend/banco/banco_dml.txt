@@ -5,6 +5,7 @@ INSERT INTO TIPOS (descricao) VALUES ('Lazer');
 INSERT INTO TIPOS (descricao) VALUES ('Transporte');
 INSERT INTO TIPOS (descricao) VALUES ('Saúde');
 INSERT INTO TIPOS (descricao) VALUES ('Educação');
+INSERT INTO TIPOS (descricao) VALUES ('Outros');
 
 
 --INSERT DESPESA
