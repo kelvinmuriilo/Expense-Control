@@ -15,6 +15,7 @@ import { DespesaService } from '../../despesa.service';
 export class ConsultaDespesaComponent implements OnInit {
   listaDespesas: Despesa[] = [];
   formBuscarDespesa: FormGroup;
+  formModalEdicaoDespesa: FormGroup;
 
   constructor(
     private spinnerServico: Ng4LoadingSpinnerService,
@@ -24,6 +25,7 @@ export class ConsultaDespesaComponent implements OnInit {
 
   ngOnInit() {
     this.iniciarFormBuscarDespesa();
+    this.iniciarFormModalEdicaoDespesa();
     this.carregarListaDeDespesas();
   }
 
@@ -45,6 +47,15 @@ export class ConsultaDespesaComponent implements OnInit {
     });
   }
 
+  iniciarFormModalEdicaoDespesa(): void {
+    this.formModalEdicaoDespesa = this.formBuilder.group({
+      dataCadastro: this.formBuilder.control('', Validators.required),
+      descricao: this.formBuilder.control('', Validators.required),
+      valor: this.formBuilder.control('', Validators.required),
+      idTipo: this.formBuilder.control('', Validators.required)
+    });
+  }
+
   excluirDespesa(idDespesa: number): void {
     this.spinnerServico.show();
     this.despesaServico.excluirDespesa(idDespesa).subscribe(msg => {
@@ -52,5 +63,44 @@ export class ConsultaDespesaComponent implements OnInit {
       this.spinnerServico.hide();
       this.carregarListaDeDespesas();
     });
+  }
+
+  atualizarDespesa(): void {
+    this.spinnerServico.show();
+    this.despesaServico.atualizarDespesa(this.formModalEdicaoDespesa.value).subscribe(msg => {
+      console.log(msg);
+      this.spinnerServico.hide();
+    })
+  }
+
+  buscarDespesa(): void {
+    let idDespesa = this.formBuscarDespesa.value.idDespesa;
+    this.formBuscarDespesa.reset();
+    this.spinnerServico.show();
+    this.despesaServico.buscarDespesa(idDespesa).subscribe(desp => {
+      this.listaDespesas = [];
+      this.listaDespesas.push(desp);
+    });
+  }
+
+  mostarDescricaoTipo(idTipo: number): string {
+    if (idTipo == 1) {
+      return "Alimentação";
+    }
+    else if (idTipo == 2) {
+      return "Lazer";
+    }
+    else if (idTipo == 3) {
+      return "Transporte";
+    }
+    else if (idTipo == 4) {
+      return "Saúde";
+    }
+    else if (idTipo == 5) {
+      return "Educação";
+    }
+    else if (idTipo == 6) {
+      return "Outros";
+    }
   }
 }

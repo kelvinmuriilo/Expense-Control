@@ -1,9 +1,11 @@
 <div class="container col-12">
-    <div style="display: none;" class="row">
+    <div class="row">
         <div class="campo-buscar col-3">
             Buscar
             <app-input-texto [formControl]="formBuscarDespesa.controls['idDespesa']" placeholder="Digite o código"
                 msgErro="Campo obrigatório" classeIcone="fa fa-search"></app-input-texto>
+            <app-botao texto="Buscar" [liberado]="formBuscarDespesa.valid" (eventoclick)="buscarDespesa()">
+            </app-botao>
         </div>
     </div>
     <div class="row">
@@ -23,11 +25,12 @@
                     <tr *ngFor="let despesa of listaDespesas">
                         <td class="text-center">{{ despesa.idDespesa }}</td>
                         <td class="text-center">{{ despesa.descricao }}</td>
-                        <td class="text-center">{{ despesa.idTipo }}</td>
+                        <td class="text-center">{{ mostarDescricaoTipo(despesa.idTipo) }}</td>
                         <td class="text-center">{{ despesa.dataCadastro | date: 'dd/MM/yyyy'}}</td>
                         <td class="text-center">{{ despesa.valor }}</td>
                         <td class="text-center">
-                            <a class="btn btn-primary btn-sm" role="button" title="Editar">
+                            <a class="btn btn-primary btn-sm" role="button" title="Editar"
+                                (click)="atualizarDespesa(despesa.idDespesa)">
                                 <i class="fa fa-edit"></i>
                             </a>
                             <a class="btn btn-danger btn-sm" role="button" title="Excluir"
@@ -46,3 +49,56 @@
         </div>
     </div>
 </div>
+
+<!--
+<div bsModal [formGroup]="formEdicaoAvaliacao" #modalForm="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Editar Despesa</h4>
+                <button type="button" class="close" (click)="fecharModalEdicaoAvaliacao()" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-6">
+                        <app-input-texto [formControl]="formModalEdicaoDespesa.controls['descricao']"
+                            msgErro="Campo obrigatório." placeholder="Descrição" classeIcone="">
+                        </app-input-texto>
+                    </div>
+                    <div class="col-3">
+                        <app-input-selecao [formControl]="formModalEdicaoDespesa.controls['idTipo']" placeholder="Tipo"
+                            [listaOpcao]="listaDeTipos">
+                        </app-input-selecao>
+                    </div>
+                    <div class="col-3">
+                        <app-input-texto [formControl]="formModalEdicaoDespesa.controls['valor']"
+                            msgErro="Somente números." placeholder="Valor" classeIcone="">
+                        </app-input-texto>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <app-input-texto [formControl]="formModalEdicaoDespesa.controls['dataCadastro']" tipo="date"
+                            msgErro="Somente números." placeholder="Valor" classeIcone="">
+                        </app-input-texto>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="fecharModalEdicaoAvaliacao()">
+                Fechar
+            </button>
+
+            <div class="col-4">
+                <app-botao texto="Cadastrar" [liberado]="formCadastroDespesa.valid" (eventoclick)="cadastrarDespesa()">
+                </app-botao>
+            </div>
+        </div>
+    </div>
+</div>
+-->
