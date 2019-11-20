@@ -17,6 +17,7 @@ import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { InputTextoComponent } from './compartilhado/componentes/input-texto/input-texto.component';
 import { InputSelecaoComponent } from './compartilhado/componentes/input-selecao/input-selecao.component';
 import { BotaoComponent } from './compartilhado/componentes/botao/botao.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { BotaoComponent } from './compartilhado/componentes/botao/botao.componen
     ConsultaDespesaComponent,
     InputTextoComponent,
     InputSelecaoComponent,
-    BotaoComponent
+    BotaoComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -34,9 +36,12 @@ import { BotaoComponent } from './compartilhado/componentes/botao/botao.componen
     Ng4LoadingSpinnerModule.forRoot(),
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ModalModule.forRoot()
   ],
-  providers: [DespesaService],
+  providers: [
+    DespesaService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

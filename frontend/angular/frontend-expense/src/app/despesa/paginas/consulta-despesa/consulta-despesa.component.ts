@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { Despesa } from 'src/app/app.modelo';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { DespesaService } from '../../despesa.service';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 
 
@@ -13,20 +14,27 @@ import { DespesaService } from '../../despesa.service';
   styleUrls: ['./consulta-despesa.component.scss']
 })
 export class ConsultaDespesaComponent implements OnInit {
+
+  //@ViewChild('modalForm') modalForm: ModalDirective;
+
+  modalRef: BsModalRef;
   listaDespesas: Despesa[] = [];
+  listaDeTipos: Array<any> = [];
   formBuscarDespesa: FormGroup;
   formModalEdicaoDespesa: FormGroup;
 
   constructor(
     private spinnerServico: Ng4LoadingSpinnerService,
     private despesaServico: DespesaService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private modalService: BsModalService
   ) { }
 
   ngOnInit() {
     this.iniciarFormBuscarDespesa();
     this.iniciarFormModalEdicaoDespesa();
     this.carregarListaDeDespesas();
+    this.carregarListaTiposEdicaoDespesa();
   }
 
   carregarListaDeDespesas(): void {
@@ -49,6 +57,7 @@ export class ConsultaDespesaComponent implements OnInit {
 
   iniciarFormModalEdicaoDespesa(): void {
     this.formModalEdicaoDespesa = this.formBuilder.group({
+      idDespesa: this.formBuilder.control('', Validators.required),
       dataCadastro: this.formBuilder.control('', Validators.required),
       descricao: this.formBuilder.control('', Validators.required),
       valor: this.formBuilder.control('', Validators.required),
@@ -66,10 +75,19 @@ export class ConsultaDespesaComponent implements OnInit {
   }
 
   atualizarDespesa(): void {
+    let despesa: Despesa = {
+      idDespesa: this.formModalEdicaoDespesa.value.idDespesa,
+      dataCadastro: this.formModalEdicaoDespesa.value.dataCadastro,
+      descricao: this.formModalEdicaoDespesa.value.descricao,
+      valor: Number.parseInt(this.formModalEdicaoDespesa.value.valor),
+      idTipo: Number.parseInt(this.formModalEdicaoDespesa.value.idTipo)
+    }
     this.spinnerServico.show();
-    this.despesaServico.atualizarDespesa(this.formModalEdicaoDespesa.value).subscribe(msg => {
+    this.despesaServico.atualizarDespesa(despesa).subscribe(msg => {
       console.log(msg);
       this.spinnerServico.hide();
+      this.fecharModalAtualizarDespesa();
+      this.carregarListaDeDespesas();
     })
   }
 
@@ -103,4 +121,31 @@ export class ConsultaDespesaComponent implements OnInit {
       return "Outros";
     }
   }
+
+  abrirModalAtualizarDespesa(template: TemplateRef<any>, despesa: Despesa): void {
+    this.povoarCamposDoModal(despesa);
+    this.modalRef = this.modalService.show(template);
+  }
+
+  fecharModalAtualizarDespesa(): void {
+    this.modalRef.hide();
+  }
+
+  carregarListaTiposEdicaoDespesa(): void {
+    this.spinnerServico.show();
+    this.despesaServico.getListaTipos().subscribe(tipos => {
+      this.listaDeTipos = tipos;
+      this.spinnerServico.hide();
+    });
+  }
+
+  private povoarCamposDoModal(despesa: Despesa): void {
+    this.formModalEdicaoDespesa.controls['idDespesa'].setValue(despesa.idDespesa);
+    this.formModalEdicaoDespesa.controls['dataCadastro'].setValue(despesa.dataCadastro);
+    this.formModalEdicaoDespesa.controls['descricao'].setValue(despesa.descricao);
+    this.formModalEdicaoDespesa.controls['valor'].setValue(despesa.valor);
+    this.formModalEdicaoDespesa.controls['idTipo'].setValue(despesa.idTipo);
+  }
 }
+
+
