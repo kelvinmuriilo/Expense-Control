@@ -122,18 +122,10 @@
                         <p class="modal-card-title">Editar</p>
                     </header>
                     <section class="modal-card-body modal-editar">
-                        <b-field 
-                        v-for="(campo, indexCampo) in formularioEditar" 
-                        :key="indexCampo"
-                        :label="campo.label">
-                            <b-input
-                                v-model="modelCamposFormulario[indexCampo]"
-                                :type="campo.type"
-                                :placeholder="campo.placeholder"
-                                :required="campo.required"
-                            >
-                            </b-input>
-                        </b-field>
+                        
+                        <GerarCampos 
+                        :formularioCriar="formularioEditar"
+                        stateVar="modelCamposFormulario"/>
 
                     </section>
                     <footer class="modal-card-foot">
@@ -153,18 +145,10 @@
                         <p class="modal-card-title">Criar</p>
                     </header>
                     <section class="modal-card-body modal-criar">
-                        <b-field 
-                        v-for="(campo, indexCampo) in formularioCriar" 
-                        :key="indexCampo"
-                        :label="campo.label">
-                            <b-input
-                                v-model="modelCamposFormularioCriar[indexCampo]"
-                                :type="campo.type"
-                                :placeholder="campo.placeholder"
-                                :required="campo.required"
-                            >
-                            </b-input>
-                        </b-field>
+
+                        <GerarCampos 
+                        :formularioCriar="formularioCriar"
+                        stateVar="modelCamposFormularioCriar"/>
 
                     </section>
                     <footer class="modal-card-foot">
@@ -181,8 +165,11 @@
 
 <script>
 import * as diff from "fast-array-diff";
+import Datepicker from 'vuejs-datepicker';
+import { mapState } from 'vuex';
 
 import ModalConfirm from './ModalConfirm'
+import GerarCampos from './GerarCampos'
 import serializerQuery from '../utils/serializeQuery.js'
 
 var posicaoPropsEditarDeletar = -1;
@@ -190,7 +177,9 @@ var posicaoPropsEditarDeletar = -1;
 export default {
     name: 'Crud',
     components: {
-        ModalConfirm
+        ModalConfirm,
+        Datepicker,
+        GerarCampos
     },
     data: function() {
         return {
@@ -225,9 +214,6 @@ export default {
             primariaEditando: '',
             formularioEditar: [],
             formularioCriar: [],
-            modelCamposFormulario: [],
-            modelCamposFormularioCriar: [],
-            modelCamposFormularioComparar: [],
             editarLiberado: false,
             criarLiberado: false,
             chavePrimariaEditar: {},
@@ -313,20 +299,26 @@ export default {
            const jsonAtualizar = {};
 
            this.formularioEditar.forEach((item, index) => {
-               const valor = this.modelCamposFormulario[index];
+               let valor = this.$store.state.modelCamposFormulario[index];
+               if(!isNaN(valor)) valor = parseFloat(valor);
                jsonAtualizar[item.name] = valor;
            })
 
            const chavePrimaria = this.chavePrimariaEditar;
            jsonAtualizar[chavePrimaria.chave] = chavePrimaria.valor;
            
-            this.isLoadingEditando = true;
-            this.editarLiberado = false;
+           this.isLoadingEditando = true;
+           this.editarLiberado = false;
+           
+           this.urlAtualizar = this.urlAtualizar.replace('{id}', `${chavePrimaria.valor}`)
 
            this.$network.connect({
                 url: this.urlAtualizar,
                 method: 'PUT',
-                data: jsonAtualizar
+                data: JSON.stringify(jsonAtualizar),
+                headers: {
+                    'Content-Type': 'application/json',
+                }
            }).then((response) => {
                 if(response.status == 200) {
                     console.log('ok', response.data)
@@ -349,7 +341,7 @@ export default {
            event.preventDefault();
        },
        iniciarCriacao(event) {
-          
+          console.log(this)
            if(!this.opcoesDefault.criacaoInline) {
                this.$router.push(this.opcoesDefault.rotaParaCriar)
                return;
@@ -369,7 +361,12 @@ export default {
                         placeholder: item.placeholder,
                         required: item.required
                     });
-                    this.modelCamposFormularioCriar[contadorCamposCriar] = '';
+
+                    this.$store.commit(
+                        'setModelCamposFormulariosCriar', 
+                        {chave: contadorCamposCriar, valor: ''}
+                    );
+
                     contadorCamposCriar++;
                 }
            })
@@ -381,17 +378,21 @@ export default {
            const jsonCriar = {};
 
            this.formularioCriar.forEach((item, index) => {
-               const valor = this.modelCamposFormularioCriar[index];
+               let valor = this.$store.state.modelCamposFormularioCriar[index];
+               if(!isNaN(valor)) valor = parseFloat(valor);
                jsonCriar[item.name] = valor;
            })
-            console.log(jsonCriar)
+            
            this.isLoadingCriando = true;
            this.criarLiberado = false;
 
            this.$network.connect({
                 url: this.urlAdicionar,
                 method: 'POST',
-                data: jsonCriar
+                data: JSON.stringify(jsonCriar),
+                headers: {
+                    'Content-Type': 'application/json',
+                }
            }).then((response) => {
                 if(response.status == 200) {
                     console.log('ok', response.data)
@@ -440,10 +441,14 @@ export default {
             }).then((result) => {
                 if (result.value) {
                     swalWithBootstrapButtons.showLoading()
+                    this.urlDeletar = this.urlDeletar.replace('{id}', `${dados.primaria}`)
                     this.$network.connect({
                             url: this.urlDeletar,
                             method: 'DELETE',
-                            data: params
+                            data: params,
+                            headers: {
+                                'Content-Type': 'application/json',
+                            }
                     }).then((response) => {
                             if(response.status == 200) {
                                 console.log('ok', response.data)
@@ -488,7 +493,12 @@ export default {
                         placeholder: item.placeholder,
                         required: item.required
                     });
-                    this.modelCamposFormulario[contadorCampos] = dadosLinha.dados[index];
+
+                    this.$store.commit(
+                        'setModelCamposFormularios', 
+                        {chave: contadorCampos, valor: dadosLinha.dados[index]}
+                    );
+                    
                     contadorCampos++;
                 } else {
                     this.chavePrimariaEditar = {chave: item.campoOriginal, valor: dadosLinha.dados[index]}
@@ -678,10 +688,10 @@ export default {
 
     },
     watch: {
-        modelCamposFormulario(to, yep, yep2) {
-            const comparar = diff.same(to, this.modelCamposFormularioComparar);
+        '$store.state.modelCamposFormulario'(to, yep, yep2) {
+            const comparar = diff.same(to, this.$store.state.modelCamposFormularioComparar);
 
-            if(comparar.length == this.modelCamposFormularioComparar.length) {
+            if(comparar.length == this.$store.state.modelCamposFormularioComparar.length) {
                 this.editarLiberado = false;
                 return;
             }
@@ -690,7 +700,12 @@ export default {
         },
         isEditando(to) {
             this.editarLiberado = false;
-            this.modelCamposFormularioComparar = JSON.parse(JSON.stringify(this.modelCamposFormulario));
+            
+            this.$store.commit(
+                'setModelCamposFormulariosComparar', 
+                {chave: -1, valor: JSON.parse(JSON.stringify(this.$store.state.modelCamposFormulario))}
+            );
+            
             setTimeout(() => {
                 if(to) {
                     const element = document.querySelector('.modal-editar');

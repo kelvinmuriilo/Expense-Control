@@ -5,7 +5,9 @@
       :opcoes="opcoes"
       baseUrl="/Despesa"
       urlListar=""
-	  urlAdicionar="/Despesa/Create"
+	    urlAdicionar="/Despesa"
+	    urlAtualizar="/Despesa/{id}"
+	    urlDeletar="/Despesa/{id}"
     />
   </div>
 </template>
@@ -32,12 +34,13 @@ export default {
         },
         dataCadastro: {
           label: 'Data Cadastro',
+          tipoCampo: 'datepicker',
           pesquisa: {
             ativo: false,
           },
           ordenar: false,
           funcaoExec(valor) {
-        	return moment(valor).format("DD/MM/YYYY")
+        	  return moment(valor).format("DD/MM/YYYY")
           }
         },
         descricao: {
