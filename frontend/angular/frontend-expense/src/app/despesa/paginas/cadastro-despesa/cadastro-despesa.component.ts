@@ -1,10 +1,22 @@
+/**
+ * Author: Kelvin Murilo Araújo Santos
+ * Data: 19/11/2019
+ */
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
-import { DespesaService } from '../../despesa.service';
-import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
-import { CadastrarDespesa, Despesa } from 'src/app/app.modelo';
 import { Router } from '@angular/router';
+
+//Serviço
+import { DespesaService } from '../../despesa.service';
+
+//Terceiros
+import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+
+//Modelos
+import { CadastrarDespesa } from 'src/app/app.modelo';
+
+//Constantes
+import { REGEX } from 'src/app/app.constante';
 
 @Component({
   selector: 'app-cadastro-despesa',
@@ -30,7 +42,10 @@ export class CadastroDespesaComponent implements OnInit {
   iniciarFromCadastroDespesa(): void {
     this.formCadastroDespesa = this.formBuilder.group({
       dataCadastro: this.formBuilder.control('', Validators.required),
-      descricao: this.formBuilder.control('', Validators.required),
+      descricao: this.formBuilder.control('', [
+        Validators.required,
+        Validators.minLength(2)
+      ]),
       valor: this.formBuilder.control('', Validators.required),
       idTipo: this.formBuilder.control('', Validators.required)
     });

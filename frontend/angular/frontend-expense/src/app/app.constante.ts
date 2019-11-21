@@ -1,8 +1,13 @@
-export const URLS_NAMES ={
+const URLS_NAMES = {
     cadastroDespesa: 'cadastro-despesa',
     consultaDespesa: 'consulta-despesa'
 }
 
-export const PROPRIEDADES ={
-    URL_BASE: 'http://localhost:5001/'
+const REGEX = {
+    nome: "/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/"
+}
+
+export {
+    URLS_NAMES,
+    REGEX
 }
