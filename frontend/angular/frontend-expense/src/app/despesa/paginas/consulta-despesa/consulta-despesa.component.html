@@ -10,42 +10,47 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-10 mt-5">
-            <table class="table table-striped">
-                <thead class="table-dark">
-                    <tr>
-                        <th style="width: 5%;" class="text-center">Código</th>
-                        <th style="width: 20%;" class="text-center">Descrição</th>
-                        <th style="width: 15%;" class="text-center">Tipo</th>
-                        <th style="width: 15%;" class="text-center">Data</th>
-                        <th style="width: 20%;" class="text-center">Valor</th>
-                        <th style="width: 25%;" class="text-center">Ações</th>
-                    </tr>
-                </thead>
-                <tbody [class.d-none]="!mostrarTabela()">
-                    <tr *ngFor="let despesa of listaDespesas">
-                        <td class="text-center">{{ despesa.idDespesa }}</td>
-                        <td class="text-center">{{ despesa.descricao }}</td>
-                        <td class="text-center">{{ mostarDescricaoTipo(despesa.idTipo) }}</td>
-                        <td class="text-center">{{ despesa.dataCadastro | date: 'dd/MM/yyyy'}}</td>
-                        <td class="text-center">{{ despesa.valor | currency:'BRL'}}</td>
-                        <td class="text-center">
-                            <a class="btn btn-primary btn-sm" role="button" title="Editar"
-                                (click)="abrirModalAtualizarDespesa(modalEdicao, despesa)">
-                                <i class="fa fa-edit"></i>
-                            </a>
-                            <a class="btn btn-danger btn-sm" role="button" title="Excluir"
-                                (click)="excluirDespesa(despesa.idDespesa)">
-                                <i class="fa fa-trash"></i>
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-                <tbody [class.d-none]="mostrarTabela()">
-                    <tr>
-                        <th colspan="6" class="text-center">Não foram encontrados registros!</th>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="card">
+                <div class="card-header">Tabela de Despesas</div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead class="table-dark">
+                            <tr>
+                                <th style="width: 5%;" class="text-center">Código</th>
+                                <th style="width: 20%;" class="text-center">Descrição</th>
+                                <th style="width: 15%;" class="text-center">Tipo</th>
+                                <th style="width: 15%;" class="text-center">Data</th>
+                                <th style="width: 20%;" class="text-center">Valor</th>
+                                <th style="width: 25%;" class="text-center">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody [class.d-none]="!mostrarTabela()">
+                            <tr *ngFor="let despesa of listaDespesas">
+                                <td class="text-center">{{ despesa.idDespesa }}</td>
+                                <td class="text-center">{{ despesa.descricao }}</td>
+                                <td class="text-center">{{ mostarDescricaoTipo(despesa.idTipo) }}</td>
+                                <td class="text-center">{{ despesa.dataCadastro | date: 'dd/MM/yyyy'}}</td>
+                                <td class="text-center">{{ despesa.valor | currency:'BRL'}}</td>
+                                <td class="text-center">
+                                    <a class="btn btn-primary btn-sm" role="button" title="Editar"
+                                        (click)="abrirModalAtualizarDespesa(modalEdicao, despesa)">
+                                        <i class="fa fa-edit"></i>
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" role="button" title="Excluir"
+                                        (click)="excluirDespesa(despesa.idDespesa)">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody [class.d-none]="mostrarTabela()">
+                            <tr>
+                                <th colspan="6" class="text-center">Não foram encontrados registros!</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>
