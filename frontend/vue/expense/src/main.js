@@ -21,7 +21,7 @@ const options = {
  
 Vue.use(VueSweetalert2, options)
 
-const urlDefaultApi = 'https://localhost:44370/api';
+const urlDefaultApi = 'https://localhost:5001/api';
 
 Vue.prototype.$network = network(urlDefaultApi);
 
