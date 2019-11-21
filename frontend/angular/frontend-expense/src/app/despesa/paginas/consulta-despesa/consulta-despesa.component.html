@@ -3,15 +3,15 @@
         <div class="campo-buscar col-4 mb-3">
             Buscar
             <app-input-texto [formControl]="formBuscarDespesa.controls['idDespesa']" placeholder="Digite o código"
-                msgErro="Campo obrigatório" classeIcone="fa fa-search"></app-input-texto>
+                classeIcone="fa fa-search"></app-input-texto>
             <app-botao texto="Buscar" [liberado]="formBuscarDespesa.valid" (eventoclick)="buscarDespesa()">
             </app-botao>
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-8 mt-5">
+        <div class="col-10 mt-5">
             <table class="table table-striped">
-                <thead>
+                <thead class="table-dark">
                     <tr>
                         <th style="width: 5%;" class="text-center">Código</th>
                         <th style="width: 20%;" class="text-center">Descrição</th>
@@ -52,20 +52,22 @@
 
 <!--Modal de atualização de despesa-->
 <ng-template #modalEdicao>
-    <div class="moda-header">
+    <div class="modal-header">
         <h4 class="modal-title ml-3">Atualizar Despesa</h4>
+        <a (click)="fecharModalAtualizarDespesa()">
+            <i class="fa fa-times"></i>
+        </a>
     </div>
-
     <div class="modal-body">
         <div class="row">
             <div class="col-6">
                 <app-input-texto [formControl]="formModalEdicaoDespesa.controls['descricao']"
-                    msgErro="Campo obrigatório." placeholder="Descrição" classeIcone="">
+                    msgErro="Campo obrigatório." placeholder="Descrição" classeIcone="fa-pencil">
                 </app-input-texto>
             </div>
             <div class="col-6">
                 <app-input-texto [formControl]="formModalEdicaoDespesa.controls['dataCadastro']" tipo="date"
-                    msgErro="Somente números." placeholder="Valor" classeIcone="">
+                    msgErro="Somente números." placeholder="" classeIcone="fa-calendar">
                 </app-input-texto>
             </div>
         </div>
@@ -73,27 +75,26 @@
         <div class="row">
             <div class="col-6">
                 <app-input-selecao [formControl]="formModalEdicaoDespesa.controls['idTipo']" placeholder="Tipo"
-                    [listaOpcao]="listaDeTipos">
+                    [listaOpcao]="listaDeTipos" classeIcone="fa-arrow-right">
                 </app-input-selecao>
             </div>
             <div class="col-6">
                 <app-input-texto [formControl]="formModalEdicaoDespesa.controls['valor']" msgErro="Somente números."
-                    placeholder="Valor" classeIcone="">
+                    placeholder="Valor" classeIcone="fa-dollar">
                 </app-input-texto>
             </div>
         </div>
     </div>
 
     <div class="modal-footer">
-        <div class="col-6">
-            <app-botao texto="Atualizar" [liberado]="formModalEdicaoDespesa.valid" (eventoclick)="atualizarDespesa()">
-            </app-botao>
-        </div>
-
-        <div class="col-6">
-            <app-botao texto="Fechar" classeComplementar="btn-danger" [liberado]="true"
-                (eventoclick)="fecharModalAtualizarDespesa()"></app-botao>
-
+        <div class="col-12">
+            <div class="row justify-content-end">
+                <div class="col-3">
+                    <app-botao texto="Atualizar" classeComplementar="btn-primary"
+                        [liberado]="formModalEdicaoDespesa.valid" (eventoclick)="atualizarDespesa()">
+                    </app-botao>
+                </div>
+            </div>
         </div>
     </div>
 

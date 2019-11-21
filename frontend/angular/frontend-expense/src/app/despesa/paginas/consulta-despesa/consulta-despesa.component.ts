@@ -98,6 +98,24 @@ export class ConsultaDespesaComponent implements OnInit {
     this.despesaServico.buscarDespesa(idDespesa).subscribe(desp => {
       this.listaDespesas = [];
       this.listaDespesas.push(desp);
+      this.spinnerServico.hide();
+    });
+  }
+
+  abrirModalAtualizarDespesa(template: TemplateRef<any>, despesa: Despesa): void {
+    this.povoarCamposDoModal(despesa);
+    this.modalRef = this.modalService.show(template);
+  }
+
+  fecharModalAtualizarDespesa(): void {
+    this.modalRef.hide();
+  }
+
+  carregarListaTiposEdicaoDespesa(): void {
+    this.spinnerServico.show();
+    this.despesaServico.getListaTipos().subscribe(tipos => {
+      this.listaDeTipos = tipos;
+      this.spinnerServico.hide();
     });
   }
 
@@ -120,23 +138,6 @@ export class ConsultaDespesaComponent implements OnInit {
     else if (idTipo == 6) {
       return "Outros";
     }
-  }
-
-  abrirModalAtualizarDespesa(template: TemplateRef<any>, despesa: Despesa): void {
-    this.povoarCamposDoModal(despesa);
-    this.modalRef = this.modalService.show(template);
-  }
-
-  fecharModalAtualizarDespesa(): void {
-    this.modalRef.hide();
-  }
-
-  carregarListaTiposEdicaoDespesa(): void {
-    this.spinnerServico.show();
-    this.despesaServico.getListaTipos().subscribe(tipos => {
-      this.listaDeTipos = tipos;
-      this.spinnerServico.hide();
-    });
   }
 
   private povoarCamposDoModal(despesa: Despesa): void {
