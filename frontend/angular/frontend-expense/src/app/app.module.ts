@@ -18,6 +18,9 @@ import { InputTextoComponent } from './compartilhado/componentes/input-texto/inp
 import { InputSelecaoComponent } from './compartilhado/componentes/input-selecao/input-selecao.component';
 import { BotaoComponent } from './compartilhado/componentes/botao/botao.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { NgxMaskModule } from 'ngx-mask';
+import { MomentModule } from 'ngx-moment';
+
 
 
 @NgModule({
@@ -37,7 +40,9 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    NgxMaskModule.forRoot(),
+    MomentModule
   ],
   providers: [
     DespesaService

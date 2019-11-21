@@ -46,7 +46,7 @@ export class CadastroDespesaComponent implements OnInit {
         Validators.required,
         Validators.minLength(2)
       ]),
-      valor: this.formBuilder.control('', Validators.required),
+      valor: this.formBuilder.control('', [Validators.required]),
       idTipo: this.formBuilder.control('', Validators.required)
     });
   }

@@ -1,10 +1,11 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 import { Despesa } from 'src/app/app.modelo';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { DespesaService } from '../../despesa.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import * as moment from "moment";
 
 
 
@@ -14,8 +15,6 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
   styleUrls: ['./consulta-despesa.component.scss']
 })
 export class ConsultaDespesaComponent implements OnInit {
-
-  //@ViewChild('modalForm') modalForm: ModalDirective;
 
   modalRef: BsModalRef;
   listaDespesas: Despesa[] = [];
@@ -51,7 +50,7 @@ export class ConsultaDespesaComponent implements OnInit {
 
   iniciarFormBuscarDespesa(): void {
     this.formBuscarDespesa = this.formBuilder.group({
-      idDespesa: this.formBuilder.control('', Validators.required, Validators.pattern[("^[0-9]")])
+      idDespesa: this.formBuilder.control('', Validators.required, Validators.pattern[("^[1-9][0-9]*$")])
     });
   }
 
@@ -60,7 +59,7 @@ export class ConsultaDespesaComponent implements OnInit {
       idDespesa: this.formBuilder.control('', Validators.required),
       dataCadastro: this.formBuilder.control('', Validators.required),
       descricao: this.formBuilder.control('', Validators.required),
-      valor: this.formBuilder.control('', Validators.required),
+      valor: this.formBuilder.control('', [Validators.required, Validators.pattern("^[1-9][0-9]*$")]),
       idTipo: this.formBuilder.control('', Validators.required)
     });
   }
@@ -142,10 +141,15 @@ export class ConsultaDespesaComponent implements OnInit {
 
   private povoarCamposDoModal(despesa: Despesa): void {
     this.formModalEdicaoDespesa.controls['idDespesa'].setValue(despesa.idDespesa);
-    this.formModalEdicaoDespesa.controls['dataCadastro'].setValue(despesa.dataCadastro);
+    this.formModalEdicaoDespesa.controls['dataCadastro'].setValue(despesa.dataCadastro.toString().slice(0, 10));
     this.formModalEdicaoDespesa.controls['descricao'].setValue(despesa.descricao);
     this.formModalEdicaoDespesa.controls['valor'].setValue(despesa.valor);
     this.formModalEdicaoDespesa.controls['idTipo'].setValue(despesa.idTipo);
+  }
+
+  private validacaoDeDataMaiorAtual(input: FormControl) {
+    let dataAtual = moment().toDate();
+    return (input.value > dataAtual);
   }
 }
 

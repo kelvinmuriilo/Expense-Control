@@ -45,6 +45,9 @@ export class InputTextoComponent implements OnInit, ControlValueAccessor {
   @Input() public placeholder: string;
   @Input() public msgErro: string;
   @Input() public tipo: string = 'text';
+  @Input() public mascara?: string;
+  @Input() public prefix?: string = '';
+  @Input() public separator?: string = '';
 
   @Output() public alterarValor: EventEmitter<string> = new EventEmitter<string>();
 
@@ -75,4 +78,5 @@ export class InputTextoComponent implements OnInit, ControlValueAccessor {
   registerOnTouched(funcao: Function): void {
     this.onTouched = funcao;
   }
+
 }
