@@ -6,6 +6,7 @@ using System.Linq;
 namespace backend.Repositorio
 {
   public class ExpenseRepositorio : IExpenseRepositorio
+
   {
     private readonly ExpenseDbContext _contexto;
     public ExpenseRepositorio(ExpenseDbContext ctx)
@@ -29,6 +30,12 @@ namespace backend.Repositorio
     {
       return _contexto.Despesas.OrderBy(des => des.dataCadastro);
 
+    }
+
+    public IEnumerable<Despesa> GetDespesasTipo(int idTipo)
+    {
+
+      return _contexto.Despesas.Where(d => d.idTipo == idTipo).OrderBy(d => d.dataCadastro).ToList();
     }
 
     public IEnumerable<Tipo> GetTipos()
