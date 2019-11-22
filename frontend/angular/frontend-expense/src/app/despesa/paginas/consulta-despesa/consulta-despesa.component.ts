@@ -8,7 +8,6 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import * as moment from "moment";
 
 
-
 @Component({
   selector: 'app-consulta-despesa',
   templateUrl: './consulta-despesa.component.html',
@@ -27,7 +26,7 @@ export class ConsultaDespesaComponent implements OnInit {
     private spinnerServico: Ng4LoadingSpinnerService,
     private despesaServico: DespesaService,
     private formBuilder: FormBuilder,
-    private modalService: BsModalService
+    private modalService: BsModalService,
   ) { }
 
   ngOnInit() {
@@ -36,13 +35,6 @@ export class ConsultaDespesaComponent implements OnInit {
     this.iniciarFormModalEdicaoDespesa();
     this.carregarListaDeDespesas();
     this.carregarListaTiposEdicaoDespesa();
-    console.log(this.listaDespesas)
-  }
-
-  selecionarPagina(paginaAtual: number): void {
-    this.spinnerServico.show();
-    this.despesaServico.getListaDespesas(paginaAtual).subscribe(paginacao => {
-    });
   }
 
   carregarListaDeDespesas(): void {
@@ -91,6 +83,7 @@ export class ConsultaDespesaComponent implements OnInit {
       valor: Number.parseInt(this.formModalEdicaoDespesa.value.valor),
       idTipo: Number.parseInt(this.formModalEdicaoDespesa.value.idTipo)
     }
+
     this.spinnerServico.show();
     this.despesaServico.atualizarDespesa(despesa).subscribe(msg => {
       console.log(msg);
@@ -127,6 +120,12 @@ export class ConsultaDespesaComponent implements OnInit {
       this.spinnerServico.hide();
     });
   }
+
+  pageChange(newPage: number) {
+    this.paginaAtual = newPage;
+    this.carregarListaDeDespesas();
+  }
+
 
   mostarDescricaoTipo(idTipo: number): string {
     if (idTipo == 1) {

@@ -164,3 +164,10 @@ C:\Users\kelvin.santos\Documents\Estudos\Programação Web\Expense-Control\backe
 C:\Users\kelvin.santos\Documents\Estudos\Programação Web\Expense-Control\backend\backend\bin\Debug\netcoreapp3.0\X.PagedList.Mvc.Core.dll
 C:\Users\kelvin.santos\Documents\Estudos\Programação Web\Expense-Control\backend\backend\bin\Debug\netcoreapp3.0\X.PagedList.Web.Common.dll
 C:\Users\kelvin.santos\Documents\Estudos\Programação Web\Expense-Control\backend\backend\obj\Debug\netcoreapp3.0\backend.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Kelvin Murilo\Documents\Estudos\Expense-Control\backend\backend\bin\Debug\netcoreapp3.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Kelvin Murilo\Documents\Estudos\Expense-Control\backend\backend\bin\Debug\netcoreapp3.0\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\Kelvin Murilo\Documents\Estudos\Expense-Control\backend\backend\bin\Debug\netcoreapp3.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Kelvin Murilo\Documents\Estudos\Expense-Control\backend\backend\bin\Debug\netcoreapp3.0\X.PagedList.dll
+C:\Users\Kelvin Murilo\Documents\Estudos\Expense-Control\backend\backend\bin\Debug\netcoreapp3.0\X.PagedList.Mvc.Core.dll
+C:\Users\Kelvin Murilo\Documents\Estudos\Expense-Control\backend\backend\bin\Debug\netcoreapp3.0\X.PagedList.Web.Common.dll
+C:\Users\Kelvin Murilo\Documents\Estudos\Expense-Control\backend\backend\obj\Debug\netcoreapp3.0\backend.MvcApplicationPartsAssemblyInfo.cs

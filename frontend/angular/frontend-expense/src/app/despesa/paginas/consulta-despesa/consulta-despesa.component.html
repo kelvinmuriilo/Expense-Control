@@ -46,10 +46,14 @@
                         <th colspan="6" class="text-center">Não foram encontrados registros!</th>
                     </tr>
                 </tbody>
-                <pagination-controls (pageChange)="paginaAtual = $event" previousLabel="Anterior" nextLabel="Próximo">
-                </pagination-controls>
             </table>
+            <div class="row justify-content-center">
+
+            </div>
         </div>
+        <pagination-controls class="my-pagination" (pageChange)="pageChange($event)" previousLabel="Anterior"
+            nextLabel="Próximo">
+        </pagination-controls>
     </div>
 </div>
 
