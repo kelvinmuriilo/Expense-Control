@@ -1,7 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
-import { Despesa } from 'src/app/app.modelo';
+import { Despesa, Paginacao } from 'src/app/app.modelo';
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { DespesaService } from '../../despesa.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
@@ -15,9 +15,10 @@ import * as moment from "moment";
   styleUrls: ['./consulta-despesa.component.scss']
 })
 export class ConsultaDespesaComponent implements OnInit {
-
+  paginaAtual: number;
   modalRef: BsModalRef;
-  listaDespesas: Despesa[] = [];
+  paginacao: Paginacao;
+  listaDespesas: Array<any> = [];
   listaDeTipos: Array<any> = [];
   formBuscarDespesa: FormGroup;
   formModalEdicaoDespesa: FormGroup;
@@ -30,16 +31,25 @@ export class ConsultaDespesaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.paginaAtual = 1;
     this.iniciarFormBuscarDespesa();
     this.iniciarFormModalEdicaoDespesa();
     this.carregarListaDeDespesas();
     this.carregarListaTiposEdicaoDespesa();
+    console.log(this.listaDespesas)
+  }
+
+  selecionarPagina(paginaAtual: number): void {
+    this.spinnerServico.show();
+    this.despesaServico.getListaDespesas(paginaAtual).subscribe(paginacao => {
+    });
   }
 
   carregarListaDeDespesas(): void {
     this.spinnerServico.show();
-    this.despesaServico.getListaDespesas().subscribe(despesa => {
-      this.listaDespesas = despesa;
+    this.despesaServico.getListaDespesas(this.paginaAtual).subscribe(despesa => {
+      this.listaDespesas = despesa.lista;
+      this.paginacao = despesa;
       this.spinnerServico.hide();
     });
   }

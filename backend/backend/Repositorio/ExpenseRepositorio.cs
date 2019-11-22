@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using backend.Model;
 using System.Linq;
+using System;
+using X.PagedList;
 
 
 namespace backend.Repositorio
@@ -26,10 +28,15 @@ namespace backend.Repositorio
       return _contexto.Despesas.FirstOrDefault(des => des.idDespesa == id);
     }
 
-    public IEnumerable<Despesa> GetAll()
+    public Paginacao GetAll(int pagina)
     {
-      return _contexto.Despesas.OrderBy(des => des.dataCadastro);
+      var paginacao = new Paginacao();
+      paginacao.lista = _contexto.Despesas.OrderBy(des => des.dataCadastro).ToPagedList(pagina, 5);
 
+      var lista = _contexto.Despesas.ToList();
+      paginacao.tamanho = lista.Count() + 1;
+
+      return paginacao;
     }
 
     public IEnumerable<Despesa> GetDespesasTipo(int idTipo)

@@ -7,8 +7,7 @@ namespace backend.Repositorio
   public interface IExpenseRepositorio
   {
     void Add(Despesa despesa);
-    IEnumerable<Despesa> GetAll();
-    IEnumerable<Despesa> GetDespesasTipo(int idTipo);
+    Paginacao GetAll(int pagina);
     IEnumerable<Tipo> GetTipos();
     Despesa Find(int id);
     void Remove(int id);

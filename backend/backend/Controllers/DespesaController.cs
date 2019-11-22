@@ -15,20 +15,14 @@ namespace backend.Controllers
       _expenseRepositorio = _expenseRepo;
     }
 
-    [HttpGet]
-    public IEnumerable<Despesa> GetAll()
+
+    [HttpGet("{paginaAtual}")]
+    public Paginacao GetAll(int paginaAtual)
     {
-      return _expenseRepositorio.GetAll();
+      return _expenseRepositorio.GetAll(paginaAtual);
     }
 
-
-    [HttpGet("grupo/{idTipo}", Name = "GetDespesasTipo")]
-    public IEnumerable<Despesa> GetDespesasTipo(int idTipo)
-    {
-      return _expenseRepositorio.GetDespesasTipo(idTipo);
-    }
-
-    [HttpGet("{id}", Name = "GetDespesa")]
+    [HttpGet("GetById/{id}", Name = "GetDespesa")]
     public IActionResult GetById(int id)
     {
       var despesa = _expenseRepositorio.Find(id);

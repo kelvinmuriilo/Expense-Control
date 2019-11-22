@@ -5,7 +5,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Despesa, Tipo, CadastrarDespesa, AtualizarDespesa } from '../app.modelo';
+import { Despesa, Tipo, CadastrarDespesa, AtualizarDespesa, Paginacao } from '../app.modelo';
 import { Observable } from 'rxjs';
 
 const URL_CONTROLADOR: string = 'https://localhost:5001/api';
@@ -23,8 +23,8 @@ export class DespesaService {
     private httpClient: HttpClient
   ) { }
 
-  getListaDespesas(): Observable<Array<Despesa>> {
-    return this.httpClient.get<Array<Despesa>>(`${URL_CONTROLADOR}/despesa`);
+  getListaDespesas(paginaAtual: number): Observable<Paginacao> {
+    return this.httpClient.get<Paginacao>(`${URL_CONTROLADOR}/despesa/${paginaAtual}`);
   }
 
   getListaTipos(): Observable<Array<Tipo>> {
@@ -50,7 +50,7 @@ export class DespesaService {
   }
 
   buscarDespesa(idDespesa: number): Observable<Despesa> {
-    return this.httpClient.get<Despesa>(`${URL_CONTROLADOR}/despesa/${idDespesa}`);
+    return this.httpClient.get<Despesa>(`${URL_CONTROLADOR}/despesa/GetById/${idDespesa}`);
   }
 
 }
