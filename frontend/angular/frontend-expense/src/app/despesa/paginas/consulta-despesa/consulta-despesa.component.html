@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-10 mt-5">
+        <div class="col-10 mt-3">
             <table class="table table-striped">
                 <thead class="table-dark">
                     <tr>
@@ -22,7 +22,8 @@
                     </tr>
                 </thead>
                 <tbody [class.d-none]="!mostrarTabela()">
-                    <tr *ngFor="let despesa of listaDespesas">
+                    <tr *ngFor="let despesa of listaDespesas | paginate: {itemsPerPage: 5, currentPage: paginaAtual, 
+                        totalItems: paginacao.tamanho };">
                         <td class="text-center">{{ despesa.idDespesa }}</td>
                         <td class="text-center">{{ despesa.descricao }}</td>
                         <td class="text-center">{{ mostarDescricaoTipo(despesa.idTipo) }}</td>
@@ -45,6 +46,8 @@
                         <th colspan="6" class="text-center">Não foram encontrados registros!</th>
                     </tr>
                 </tbody>
+                <pagination-controls (pageChange)="paginaAtual = $event" previousLabel="Anterior" nextLabel="Próximo">
+                </pagination-controls>
             </table>
         </div>
     </div>

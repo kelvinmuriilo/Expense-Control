@@ -20,6 +20,7 @@ import { BotaoComponent } from './compartilhado/componentes/botao/botao.componen
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgxMaskModule } from 'ngx-mask';
 import { MomentModule } from 'ngx-moment';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 
@@ -32,6 +33,7 @@ import { MomentModule } from 'ngx-moment';
     InputSelecaoComponent,
     BotaoComponent,
 
+
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { MomentModule } from 'ngx-moment';
     ReactiveFormsModule,
     ModalModule.forRoot(),
     NgxMaskModule.forRoot(),
-    MomentModule
+    MomentModule,
+    NgxPaginationModule
   ],
   providers: [
     DespesaService

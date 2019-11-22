@@ -26,9 +26,15 @@ interface AtualizarDespesa {
     idTipo: number;
 }
 
+interface Paginacao {
+    tamanho: number;
+    lista: Array<any>
+}
+
 export {
     Despesa,
     Tipo,
     CadastrarDespesa,
-    AtualizarDespesa
+    AtualizarDespesa,
+    Paginacao
 }
