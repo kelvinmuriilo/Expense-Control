@@ -58,4 +58,16 @@ export class ModalService {
     this.bsModalRef = this.modalService.show(ModalMensagemComponent, { initialState });
   }
 
+  private exibirMensamConfirmacao(titulo: string, mensagem: string, classeComplementar: string, funcaoConfirmado: Function, funcaoNaoConfirmado: Function) {
+    const initialState = {
+      titulo: titulo,
+      mensagem: mensagem,
+      classeComplementar: classeComplementar,
+      funcaoConfirmado: Function,
+      funcaoNaoConfirmado: Function
+    };
+
+    this.bsModalRef = this.modalService.show(ModalMensagemComponent, { initialState });
+  }
+
 }
