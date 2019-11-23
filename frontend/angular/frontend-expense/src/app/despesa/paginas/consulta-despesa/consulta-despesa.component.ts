@@ -6,6 +6,7 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { DespesaService } from '../../despesa.service';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import * as moment from "moment";
+import { ModalService } from 'src/app/compartilhado/componentes/modal/modal.service';
 
 
 @Component({
@@ -26,15 +27,16 @@ export class ConsultaDespesaComponent implements OnInit {
     private spinnerServico: Ng4LoadingSpinnerService,
     private despesaServico: DespesaService,
     private formBuilder: FormBuilder,
-    private modalService: BsModalService,
+    private bsModalService: BsModalService,
+    private modalService: ModalService
   ) { }
 
   ngOnInit() {
     this.paginaAtual = 1;
+    this.carregarListaTiposEdicaoDespesa();
+    this.carregarListaDeDespesas();
     this.iniciarFormBuscarDespesa();
     this.iniciarFormModalEdicaoDespesa();
-    this.carregarListaDeDespesas();
-    this.carregarListaTiposEdicaoDespesa();
   }
 
   carregarListaDeDespesas(): void {
@@ -86,7 +88,11 @@ export class ConsultaDespesaComponent implements OnInit {
 
     this.spinnerServico.show();
     this.despesaServico.atualizarDespesa(despesa).subscribe(msg => {
-      console.log(msg);
+      if (msg.includes("Erro")) {
+        this.modalService.exibirErro(msg);
+      } else {
+        this.modalService.exibirSucesso(msg);
+      }
       this.spinnerServico.hide();
       this.fecharModalAtualizarDespesa();
       this.carregarListaDeDespesas();
@@ -106,7 +112,7 @@ export class ConsultaDespesaComponent implements OnInit {
 
   abrirModalAtualizarDespesa(template: TemplateRef<any>, despesa: Despesa): void {
     this.povoarCamposDoModal(despesa);
-    this.modalRef = this.modalService.show(template);
+    this.modalRef = this.bsModalService.show(template);
   }
 
   fecharModalAtualizarDespesa(): void {

@@ -30,7 +30,6 @@ namespace backend.Controllers
         return NotFound();
 
       return new ObjectResult(despesa);
-
     }
 
     [HttpPost]
@@ -38,10 +37,10 @@ namespace backend.Controllers
     {
 
       if (despesa == null)
-        throw new System.Exception("Nulo");
+        return "Erro ao cadastrar despesa!";
 
       _expenseRepositorio.Add(despesa);
-      return "Cadastrado com sucesso!";
+      return "Despesa cadastrada com sucesso!";
     }
 
     [HttpPut("{id}")]
@@ -50,7 +49,7 @@ namespace backend.Controllers
       var desp = _expenseRepositorio.Find(id);
 
       if (desp == null)
-        throw new System.Exception("Nulo");
+        return "Erro ao atualizar despesa!";
 
       desp.dataCadastro = despesa.dataCadastro;
       desp.descricao = despesa.descricao;
@@ -58,7 +57,7 @@ namespace backend.Controllers
       desp.valor = despesa.valor;
 
       _expenseRepositorio.Update(desp);
-      return "Atualizado com sucesso!";
+      return "Despesa atualizada com sucesso!";
     }
 
     [HttpDelete("{id}")]
@@ -67,10 +66,10 @@ namespace backend.Controllers
       var despesa = _expenseRepositorio.Find(id);
 
       if (despesa == null)
-        throw new System.Exception("Nulo");
+        return "Erro ao excluir despesa!";
 
       _expenseRepositorio.Remove(id);
-      return "Excluído com sucesso!";
+      return "Despesa excluída com sucesso!";
     }
   }
 }

@@ -4,7 +4,6 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 
 //Serviço
 import { DespesaService } from '../../despesa.service';
@@ -16,7 +15,7 @@ import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
 import { CadastrarDespesa } from 'src/app/app.modelo';
 
 //Constantes
-import { REGEX } from 'src/app/app.constante';
+import { ModalService } from 'src/app/compartilhado/componentes/modal/modal.service';
 
 @Component({
   selector: 'app-cadastro-despesa',
@@ -31,7 +30,7 @@ export class CadastroDespesaComponent implements OnInit {
     private formBuilder: FormBuilder,
     private despesaServico: DespesaService,
     private spinnerServico: Ng4LoadingSpinnerService,
-    private router: Router
+    private modalServico: ModalService
   ) { }
 
   ngOnInit() {
@@ -67,9 +66,14 @@ export class CadastroDespesaComponent implements OnInit {
       idTipo: Number.parseInt(this.formCadastroDespesa.value.idTipo)
     };
     this.spinnerServico.show();
-    this.despesaServico.cadastrarDespesa(despesa).subscribe(msg =>
-      console.log(msg));
-    this.spinnerServico.hide();
-    this.formCadastroDespesa.reset();
+    this.despesaServico.cadastrarDespesa(despesa).subscribe(msg => {
+      if (msg.includes("Erro")) {
+        this.modalServico.exibirErro(msg);
+      } else {
+        this.modalServico.exibirSucesso(msg);
+      }
+      this.spinnerServico.hide();
+      this.formCadastroDespesa.reset();
+    });
   }
 }

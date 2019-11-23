@@ -21,19 +21,25 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { NgxMaskModule } from 'ngx-mask';
 import { MomentModule } from 'ngx-moment';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ModalMensagemComponent } from './compartilhado/componentes/modal/modal-mensagem/modal-mensagem.component';
+import { ModalService } from 'src/app/compartilhado/componentes/modal/modal.service';
 
+const COMPONENTES = [
+  AppComponent,
+  CadastroDespesaComponent,
+  ConsultaDespesaComponent,
+  InputTextoComponent,
+  InputSelecaoComponent,
+  BotaoComponent,
+  ModalMensagemComponent
+];
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CadastroDespesaComponent,
-    ConsultaDespesaComponent,
-    InputTextoComponent,
-    InputSelecaoComponent,
-    BotaoComponent,
-
-
+  declarations: COMPONENTES,
+  exports: COMPONENTES,
+  entryComponents: [
+    ModalMensagemComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +54,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     NgxPaginationModule
   ],
   providers: [
-    DespesaService
+    DespesaService,
+    ModalService
   ],
   bootstrap: [AppComponent]
 })
