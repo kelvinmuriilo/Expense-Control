@@ -82,17 +82,13 @@ export class ConsultaDespesaComponent implements OnInit {
       idDespesa: this.formModalEdicaoDespesa.value.idDespesa,
       dataCadastro: this.formModalEdicaoDespesa.value.dataCadastro,
       descricao: this.formModalEdicaoDespesa.value.descricao,
-      valor: Number.parseInt(this.formModalEdicaoDespesa.value.valor),
+      valor: Number.parseFloat(this.formModalEdicaoDespesa.value.valor),
       idTipo: Number.parseInt(this.formModalEdicaoDespesa.value.idTipo)
     }
 
     this.spinnerServico.show();
     this.despesaServico.atualizarDespesa(despesa).subscribe(msg => {
-      if (msg.includes("Erro")) {
-        this.modalService.exibirErro(msg);
-      } else {
-        this.modalService.exibirSucesso(msg);
-      }
+      this.alterarModalRespota(msg);
       this.spinnerServico.hide();
       this.fecharModalAtualizarDespesa();
       this.carregarListaDeDespesas();
@@ -165,6 +161,14 @@ export class ConsultaDespesaComponent implements OnInit {
   private validacaoDeDataMaiorAtual(input: FormControl) {
     let dataAtual = moment().toDate();
     return (input.value > dataAtual);
+  }
+
+  private alterarModalRespota(msg: string) {
+    if (msg.includes("Erro")) {
+      this.modalService.exibirErro(msg);
+    } else {
+      this.modalService.exibirSucesso(msg);
+    }
   }
 }
 

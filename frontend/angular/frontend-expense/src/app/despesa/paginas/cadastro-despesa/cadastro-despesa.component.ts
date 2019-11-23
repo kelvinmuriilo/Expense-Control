@@ -62,18 +62,23 @@ export class CadastroDespesaComponent implements OnInit {
     let despesa: CadastrarDespesa = {
       dataCadastro: this.formCadastroDespesa.value.dataCadastro,
       descricao: this.formCadastroDespesa.value.descricao,
-      valor: Number.parseInt(this.formCadastroDespesa.value.valor),
+      valor: Number.parseFloat(this.formCadastroDespesa.value.valor),
       idTipo: Number.parseInt(this.formCadastroDespesa.value.idTipo)
     };
     this.spinnerServico.show();
     this.despesaServico.cadastrarDespesa(despesa).subscribe(msg => {
-      if (msg.includes("Erro")) {
-        this.modalServico.exibirErro(msg);
-      } else {
-        this.modalServico.exibirSucesso(msg);
-      }
+      this.alterarModalRespota(msg);
       this.spinnerServico.hide();
       this.formCadastroDespesa.reset();
     });
+  }
+
+
+  private alterarModalRespota(msg: string) {
+    if (msg.includes("Erro")) {
+      this.modalServico.exibirErro(msg);
+    } else {
+      this.modalServico.exibirSucesso(msg);
+    }
   }
 }
