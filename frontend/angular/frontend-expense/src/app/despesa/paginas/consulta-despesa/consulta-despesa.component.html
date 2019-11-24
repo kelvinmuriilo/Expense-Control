@@ -76,6 +76,9 @@
                 <app-input-texto [formControl]="formModalEdicaoDespesa.controls['dataCadastro']" tipo="date"
                     msgErro="Somente números." placeholder="" classeIcone="fa-calendar">
                 </app-input-texto>
+                <ng-container *ngIf="mostrarAlertaDataMaiorQueAtual()">
+                    <span class="alerta">* A data informada não pode ser maior que a data atual.</span>
+                </ng-container>
             </div>
         </div>
 
@@ -97,8 +100,8 @@
         <div class="col-12">
             <div class="row justify-content-end">
                 <div class="col-3">
-                    <app-botao texto="Atualizar" classeComplementar="btn-primary"
-                        [liberado]="formModalEdicaoDespesa.valid" (eventoclick)="atualizarDespesa()">
+                    <app-botao texto="Atualizar" classeComplementar="btn-primary" [liberado]="liberarBotaoAualizar()"
+                        (eventoclick)="atualizarDespesa()">
                     </app-botao>
                 </div>
             </div>

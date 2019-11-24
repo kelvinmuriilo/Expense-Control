@@ -63,7 +63,7 @@ export class ConsultaDespesaComponent implements OnInit {
       idDespesa: this.formBuilder.control('', Validators.required),
       dataCadastro: this.formBuilder.control('', Validators.required),
       descricao: this.formBuilder.control('', Validators.required),
-      valor: this.formBuilder.control('', [Validators.required, Validators.pattern("^[1-9][0-9]*$")]),
+      valor: this.formBuilder.control('', [Validators.required]),
       idTipo: this.formBuilder.control('', Validators.required)
     });
   }
@@ -128,6 +128,20 @@ export class ConsultaDespesaComponent implements OnInit {
     this.carregarListaDeDespesas();
   }
 
+  mostrarAlertaDataMaiorQueAtual(): boolean {
+    let dataAtual = moment().toDate();
+    let strDataInformada = this.formModalEdicaoDespesa.value.dataCadastro;
+    let dateDataInformada = new Date(strDataInformada);
+
+    if (strDataInformada) {
+      return dateDataInformada > dataAtual;
+    }
+  }
+
+  liberarBotaoAualizar(): boolean {
+    return this.formModalEdicaoDespesa.valid &&
+      !this.mostrarAlertaDataMaiorQueAtual();
+  }
 
   mostarDescricaoTipo(idTipo: number): string {
     if (idTipo == 1) {

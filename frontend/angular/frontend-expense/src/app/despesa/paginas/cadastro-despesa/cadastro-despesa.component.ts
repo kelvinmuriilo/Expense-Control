@@ -10,12 +10,15 @@ import { DespesaService } from '../../despesa.service';
 
 //Terceiros
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+import * as moment from "moment";
 
 //Modelos
 import { CadastrarDespesa } from 'src/app/app.modelo';
 
 //Constantes
 import { ModalService } from 'src/app/compartilhado/componentes/modal/modal.service';
+import { invalid } from '@angular/compiler/src/render3/view/util';
+
 
 @Component({
   selector: 'app-cadastro-despesa',
@@ -65,12 +68,29 @@ export class CadastroDespesaComponent implements OnInit {
       valor: Number.parseFloat(this.formCadastroDespesa.value.valor),
       idTipo: Number.parseInt(this.formCadastroDespesa.value.idTipo)
     };
+
+    console.log(despesa);
     this.spinnerServico.show();
     this.despesaServico.cadastrarDespesa(despesa).subscribe(msg => {
       this.alterarModalRespota(msg);
       this.spinnerServico.hide();
       this.formCadastroDespesa.reset();
     });
+  }
+
+  mostrarAlertaDataMaiorQueAtual(): boolean {
+    let dataAtual = moment().toDate();
+    let strDataInformada = this.formCadastroDespesa.value.dataCadastro;
+    let dateDataInformada = new Date(strDataInformada);
+
+    if (strDataInformada) {
+      return dateDataInformada > dataAtual;
+    }
+  }
+
+  liberarBotaoCadastrar(): boolean {
+    return this.formCadastroDespesa.valid &&
+      !this.mostrarAlertaDataMaiorQueAtual();
   }
 
 
