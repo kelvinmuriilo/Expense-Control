@@ -31,7 +31,7 @@ namespace backend.Repositorio
     public Paginacao GetAll(int pagina)
     {
       var paginacao = new Paginacao();
-      paginacao.lista = _contexto.Despesas.OrderBy(des => des.dataCadastro).ToPagedList(pagina, 5);
+      paginacao.lista = _contexto.Despesas.OrderByDescending(des => des.dataCadastro).ToPagedList(pagina, 5);
 
       var lista = _contexto.Despesas.ToList();
       paginacao.tamanho = lista.Count() + 1;
@@ -42,7 +42,7 @@ namespace backend.Repositorio
     public IEnumerable<Despesa> GetDespesasTipo(int idTipo)
     {
 
-      return _contexto.Despesas.Where(d => d.idTipo == idTipo).OrderBy(d => d.dataCadastro).ToList();
+      return _contexto.Despesas.Where(d => d.idTipo == idTipo).OrderByDescending(d => d.dataCadastro).ToList();
     }
 
     public IEnumerable<Tipo> GetTipos()

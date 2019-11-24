@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using backend.Repositorio;
 using System.Collections.Generic;
+using System;
+
 using backend.Model;
 
 
@@ -10,6 +12,7 @@ namespace backend.Controllers
   public class DespesaController : Controller
   {
     private readonly IExpenseRepositorio _expenseRepositorio;
+    private DateTime dataAtual = DateTime.Today;
     public DespesaController(IExpenseRepositorio _expenseRepo)
     {
       _expenseRepositorio = _expenseRepo;
@@ -39,6 +42,9 @@ namespace backend.Controllers
       if (despesa == null)
         return "Erro ao cadastrar despesa!";
 
+      if (despesa.dataCadastro > dataAtual)
+        return "Erro! A data informada não pode ser maior que a data atual.";
+
       _expenseRepositorio.Add(despesa);
       return "Despesa cadastrada com sucesso!";
     }
@@ -55,6 +61,9 @@ namespace backend.Controllers
       desp.descricao = despesa.descricao;
       desp.idTipo = despesa.idTipo;
       desp.valor = despesa.valor;
+
+      if (desp.dataCadastro > dataAtual)
+        return "Erro! A data informada não pode ser maior que a data atual.";
 
       _expenseRepositorio.Update(desp);
       return "Despesa atualizada com sucesso!";
