@@ -73,20 +73,20 @@
                 </app-input-texto>
             </div>
             <div class="col-6">
+                <app-input-selecao [formControl]="formModalEdicaoDespesa.controls['idTipo']" placeholder="Tipo"
+                    [listaOpcao]="listaDeTipos" classeIcone="fa-arrow-right">
+                </app-input-selecao>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
                 <app-input-texto [formControl]="formModalEdicaoDespesa.controls['dataCadastro']" tipo="date"
                     msgErro="Somente números." placeholder="" classeIcone="fa-calendar">
                 </app-input-texto>
                 <ng-container *ngIf="mostrarAlertaDataMaiorQueAtual()">
                     <span class="alerta">* A data informada não pode ser maior que a data atual.</span>
                 </ng-container>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-6">
-                <app-input-selecao [formControl]="formModalEdicaoDespesa.controls['idTipo']" placeholder="Tipo"
-                    [listaOpcao]="listaDeTipos" classeIcone="fa-arrow-right">
-                </app-input-selecao>
             </div>
             <div class="col-6">
                 <app-input-texto [formControl]="formModalEdicaoDespesa.controls['valor']" msgErro="Somente números."

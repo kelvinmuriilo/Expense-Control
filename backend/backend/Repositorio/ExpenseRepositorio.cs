@@ -20,7 +20,6 @@ namespace backend.Repositorio
     {
       _contexto.Despesas.Add(despesa);
       _contexto.SaveChanges();
-
     }
 
     public Despesa Find(int id)
@@ -34,14 +33,13 @@ namespace backend.Repositorio
       paginacao.lista = _contexto.Despesas.OrderByDescending(des => des.dataCadastro).ToPagedList(pagina, 5);
 
       var lista = _contexto.Despesas.ToList();
-      paginacao.tamanho = lista.Count() + 1;
+      paginacao.tamanho = lista.Count();
 
       return paginacao;
     }
 
     public IEnumerable<Despesa> GetDespesasTipo(int idTipo)
     {
-
       return _contexto.Despesas.Where(d => d.idTipo == idTipo).OrderByDescending(d => d.dataCadastro).ToList();
     }
 
@@ -55,14 +53,12 @@ namespace backend.Repositorio
       var despesa = _contexto.Despesas.Find(id);
       _contexto.Despesas.Remove(despesa);
       _contexto.SaveChanges();
-
     }
 
     public void Update(Despesa despesa)
     {
       _contexto.Despesas.Update(despesa);
       _contexto.SaveChanges();
-
     }
   }
 }

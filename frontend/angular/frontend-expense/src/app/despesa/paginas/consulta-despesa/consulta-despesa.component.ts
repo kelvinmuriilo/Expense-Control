@@ -71,7 +71,7 @@ export class ConsultaDespesaComponent implements OnInit {
   excluirDespesa(idDespesa: number): void {
     this.spinnerServico.show();
     this.despesaServico.excluirDespesa(idDespesa).subscribe(msg => {
-      console.log(msg);
+      this.modalService.exibirSucesso(msg);
       this.spinnerServico.hide();
       this.carregarListaDeDespesas();
     });
