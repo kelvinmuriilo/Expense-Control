@@ -44,7 +44,10 @@ namespace backend.Repositorio
 
     public IEnumerable<Despesa> GetDespesasTipo(int idTipo)
     {
-      return _contexto.Despesas.Where(d => d.idTipo == idTipo).OrderByDescending(d => d.dataCadastro).ToList();
+      return _contexto.Despesas
+        .Where(d => d.idTipo == idTipo)
+        .OrderByDescending(d => d.dataCadastro)
+        .ToList();
     }
 
     public IEnumerable<Tipo> GetTipos()
