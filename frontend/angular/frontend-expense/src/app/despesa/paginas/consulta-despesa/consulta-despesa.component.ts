@@ -22,6 +22,7 @@ export class ConsultaDespesaComponent implements OnInit {
   listaDeTipos: Array<any> = [];
   formBuscarDespesa: FormGroup;
   formModalEdicaoDespesa: FormGroup;
+  idDespesa: number;
 
   constructor(
     private spinnerServico: Ng4LoadingSpinnerService,
@@ -68,11 +69,12 @@ export class ConsultaDespesaComponent implements OnInit {
     });
   }
 
-  excluirDespesa(idDespesa: number): void {
+  deletarDespesa(idDespesa: number): any {
     this.spinnerServico.show();
     this.despesaServico.excluirDespesa(idDespesa).subscribe(msg => {
-      this.modalService.exibirSucesso(msg);
+      this.alterarModalRespota(msg);
       this.spinnerServico.hide();
+      this.fecharModal();
       this.carregarListaDeDespesas();
     });
   }
@@ -90,7 +92,7 @@ export class ConsultaDespesaComponent implements OnInit {
     this.despesaServico.atualizarDespesa(despesa).subscribe(msg => {
       this.alterarModalRespota(msg);
       this.spinnerServico.hide();
-      this.fecharModalAtualizarDespesa();
+      this.fecharModal();
       this.carregarListaDeDespesas();
     })
   }
@@ -111,7 +113,12 @@ export class ConsultaDespesaComponent implements OnInit {
     this.modalRef = this.bsModalService.show(template);
   }
 
-  fecharModalAtualizarDespesa(): void {
+  abrirModalExcluir(template: TemplateRef<any>, idDespesa: number): void {
+    this.idDespesa = idDespesa;
+    this.modalRef = this.bsModalService.show(template);
+  }
+
+  fecharModal(): void {
     this.modalRef.hide();
   }
 

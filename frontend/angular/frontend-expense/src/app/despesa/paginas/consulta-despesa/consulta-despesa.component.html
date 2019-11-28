@@ -35,7 +35,7 @@
                                 <i class="fa fa-edit"></i>
                             </a>
                             <a class="btn btn-danger btn-sm" role="button" title="Excluir"
-                                (click)="excluirDespesa(despesa.idDespesa)">
+                                (click)="abrirModalExcluir(modalExclusao, despesa.idDespesa)">
                                 <i class="fa fa-trash"></i>
                             </a>
                         </td>
@@ -61,7 +61,7 @@
 <ng-template #modalEdicao>
     <div class="modal-header">
         <h4 class="modal-title ml-3">Atualizar Despesa</h4>
-        <a (click)="fecharModalAtualizarDespesa()">
+        <a (click)="fecharModal()">
             <i class="fa fa-times"></i>
         </a>
     </div>
@@ -102,6 +102,35 @@
                 <div class="col-3">
                     <app-botao texto="Atualizar" classeComplementar="btn-primary" [liberado]="liberarBotaoAualizar()"
                         (eventoclick)="atualizarDespesa()">
+                    </app-botao>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</ng-template>
+<ng-template #modalExclusao>
+    <div class="modal-header bg-warning">
+        <h4 class="modal-title ml-1">Atenção!</h4>
+        <a (click)="fecharModal()">
+            <i class="fa fa-times"></i>
+        </a>
+    </div>
+    <div class="modal-body">
+        Confirma a exclusão?
+    </div>
+
+    <div class="modal-footer">
+        <div class="col-12">
+            <div class="row justify-content-end">
+                <div class="col-3">
+                    <app-botao texto="Sim" classeComplementar="btn-success" [liberado]="true"
+                        (eventoclick)="deletarDespesa(idDespesa)">
+                    </app-botao>
+                </div>
+                <div class="col-3">
+                    <app-botao texto="Não" classeComplementar="btn-danger" [liberado]="true"
+                        (eventoclick)="fecharModal()">
                     </app-botao>
                 </div>
             </div>

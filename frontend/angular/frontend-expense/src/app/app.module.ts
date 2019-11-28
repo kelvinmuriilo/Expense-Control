@@ -23,6 +23,8 @@ import { MomentModule } from 'ngx-moment';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ModalMensagemComponent } from './compartilhado/componentes/modal/modal-mensagem/modal-mensagem.component';
 import { ModalService } from 'src/app/compartilhado/componentes/modal/modal.service';
+import { ModalConfirmacaoComponent } from './compartilhado/componentes/modal/modal-confirmacao/modal-confirmacao.component';
+
 
 const COMPONENTES = [
   AppComponent,
@@ -31,7 +33,8 @@ const COMPONENTES = [
   InputTextoComponent,
   InputSelecaoComponent,
   BotaoComponent,
-  ModalMensagemComponent
+  ModalMensagemComponent,
+  ModalConfirmacaoComponent
 ];
 
 
@@ -39,7 +42,8 @@ const COMPONENTES = [
   declarations: COMPONENTES,
   exports: COMPONENTES,
   entryComponents: [
-    ModalMensagemComponent
+    ModalMensagemComponent,
+    ModalConfirmacaoComponent
   ],
   imports: [
     BrowserModule,
