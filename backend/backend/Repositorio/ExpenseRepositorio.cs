@@ -30,7 +30,11 @@ namespace backend.Repositorio
     public Paginacao GetAll(int pagina)
     {
       var paginacao = new Paginacao();
-      paginacao.lista = _contexto.Despesas.OrderByDescending(des => des.dataCadastro).ToPagedList(pagina, 5);
+
+      paginacao.lista = _contexto.Despesas
+        .OrderByDescending(d => d.dataCadastro)
+        .ThenByDescending(d => d.idDespesa)
+        .ToPagedList(pagina, 5);
 
       var lista = _contexto.Despesas.ToList();
       paginacao.tamanho = lista.Count();
