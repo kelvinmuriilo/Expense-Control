@@ -1,6 +1,6 @@
 
 ## Tecnologias Utilizadas: 
-<div align="center" style="display:flex; ">
+<div align="left" style="display:flex; ">
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/250px-Angular_full_color_logo.svg.png" width="13%" height="45%"/>
 
