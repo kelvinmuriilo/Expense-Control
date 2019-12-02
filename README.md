@@ -4,7 +4,7 @@
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/250px-Angular_full_color_logo.svg.png" width="13%" height="45%"/>
 
-<img src="https://user-images.githubusercontent.com/41491555/69926731-6034a680-1494-11ea-9016-c62ac2fe320f.png)" width="18%" height="%"/>
+<img src="https://user-images.githubusercontent.com/41491555/69926731-6034a680-1494-11ea-9016-c62ac2fe320f.png" width="18%" height="%"/>
 
 https://cdn.imgbin.com/16/12/13/imgbin-entity-framework-core-asp-net-core-net-framework-microsoft-agpz43L1ErWQY9duf8zamt56D.jpg
 
