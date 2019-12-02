@@ -1,3 +1,15 @@
+
+## Tecnologias Utilizadas: 
+<div align="center" style="display:flex; ">
+
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/250px-Angular_full_color_logo.svg.png" width="13%" height="45%"/>
+
+<img src="https://cdn.imgbin.com/16/12/13/imgbin-entity-framework-core-asp-net-core-net-framework-microsoft-agpz43L1ErWQY9duf8zamt56D.jpg" width="18%" height="%"/>
+
+https://cdn.imgbin.com/16/12/13/imgbin-entity-framework-core-asp-net-core-net-framework-microsoft-agpz43L1ErWQY9duf8zamt56D.jpg
+
+
+
 O projeto Expense-Control está sendo desenvolvido como atividade avaliativa da disciplina de Programação Web, na Universidade Tiradentes.
 
 Expense-Control é um sistema de cadastro e consulta de despesas. Desenvolvido com as tecnologias: Asp.Net Core, Angular e Vue.
