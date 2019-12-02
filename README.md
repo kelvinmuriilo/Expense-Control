@@ -9,8 +9,6 @@
 <img src="https://user-images.githubusercontent.com/41491555/69926858-d9cc9480-1494-11ea-8ae4-93cf37197c63.png" width="18%" height="45%"/>
 </div>
 
-<img src="https://user-images.githubusercontent.com/41491555/69926731-6034a680-1494-11ea-9016-c62ac2fe320f.png" width="18%" height="45%"/>
-
 </div>
 
 ## O projeto:
@@ -21,10 +19,10 @@ Expense-Control é um sistema de cadastro e consulta de despesas. Desenvolvido c
 <p>
  
  ## Tela de cadastro Angular
-<img src="https://user-images.githubusercontent.com/41491555/69927721-d4bd1480-1497-11ea-917e-3756e9633c98.jpg" width="500px" height="200px"/>
+<img src="https://user-images.githubusercontent.com/41491555/69927721-d4bd1480-1497-11ea-917e-3756e9633c98.jpg" width="900px" height="300px"/>
 
 ## Tela de consulta Angular
-<img src="https://user-images.githubusercontent.com/41491555/69927762-0504b300-1498-11ea-9790-9225a38d7dc6.jpg" width="500px" />
+<img src="https://user-images.githubusercontent.com/41491555/69927762-0504b300-1498-11ea-9790-9225a38d7dc6.jpg" width="900px" />
 
 ## Top contribuidores:
 
