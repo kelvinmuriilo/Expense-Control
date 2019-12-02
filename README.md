@@ -19,7 +19,7 @@ Expense-Control é um sistema de cadastro e consulta de despesas. Desenvolvido c
 <p>
  
  ## Tela de cadastro Angular
-<img src="https://user-images.githubusercontent.com/41491555/69927721-d4bd1480-1497-11ea-917e-3756e9633c98.jpg" width="900px" height="300px"/>
+<img src="https://user-images.githubusercontent.com/41491555/69927721-d4bd1480-1497-11ea-917e-3756e9633c98.jpg" width="900px"/>
 
 ## Tela de consulta Angular
 <img src="https://user-images.githubusercontent.com/41491555/69927762-0504b300-1498-11ea-9790-9225a38d7dc6.jpg" width="900px" />
