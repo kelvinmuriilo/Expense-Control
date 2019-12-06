@@ -28,7 +28,7 @@
                         <td class="text-center">{{ despesa.descricao }}</td>
                         <td class="text-center">{{ mostarDescricaoTipo(despesa.idTipo) }}</td>
                         <td class="text-center">{{ despesa.dataCadastro | date: 'dd/MM/yyyy'}}</td>
-                        <td class="text-center">{{ despesa.valor | currency:'BRL'}}</td>
+                        <td class="text-center">{{ despesa.valor | currency:'BRL':symbol:'1.2-2':'pt'}}</td>
                         <td class="text-center">
                             <a class="btn btn-primary btn-sm" role="button" title="Editar"
                                 (click)="abrirModalAtualizarDespesa(modalEdicao, despesa)">
