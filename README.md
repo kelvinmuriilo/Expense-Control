@@ -15,7 +15,7 @@
 <p style="text-indent= 50px;">
 O projeto Expense-Control foi desenvolvido como atividade avaliativa da disciplina de Programação Web, na Universidade Tiradentes.
 
-Expense-Control é um sistema de cadastro e consulta de despesas. Desenvolvido com as tecnologias: Asp.Net Core, Angular e Vue.
+Expense-Control é um sistema de cadastro e consulta de despesas. Desenvolvido com as tecnologias: Asp.Net Core, Angular, Vue JS e SQL Server.
 <p>
  
  ## Tela de cadastro Angular
