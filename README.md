@@ -18,7 +18,7 @@ O projeto Expense-Control foi desenvolvido como atividade avaliativa da discipli
 Expense-Control é um sistema de cadastro e consulta de despesas. Desenvolvido com as tecnologias: Asp.Net Core, Angular, Vue JS e SQL Server.
 <p>
  
- ## Back-End
+ ## Back-End:
  <p>
  - Web Api para gerenciar despesas financeiras. <br/>
  - Entity Framework para mapeamento das entidades.<br/>
